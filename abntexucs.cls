@@ -3,7 +3,6 @@
 %	Formata um documento da classe abnTeX2 para o padrão exigido pela Universidade de Caxias do Sul para
 %	trabalhos de conclusão de curso.
 
-meutestes
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{abntexucs}[2018/07/14 v1.0.0 abnTeXUCS]
 \LoadClass[12pt,openright,oneside,a4paper,
