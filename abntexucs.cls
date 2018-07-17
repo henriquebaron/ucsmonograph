@@ -5,9 +5,9 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{abntexucs}[2018/07/14 v1.0.0 abnTeXUCS]
-\LoadClass[12pt,openright,oneside,a4paper,
-chapter=TITLE,section=TITLE,
-english,brazil]{abntex2}
+\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
+\ProcessOptions\relax
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Verificação do compilador utilizado
 \RequirePackage{ifluatex}
@@ -40,7 +40,7 @@ english,brazil]{abntex2}
 \RequirePackage{indentfirst} % Indenta o primeiro parágrafo de cada seção, o que não é o padrão do LaTeX.
 
 \PassOptionsToPackage{absolute}{textpos}
-\RequirePackage{textpos} % Para a criação de quadros com posição absolua (para a capa e folha de rosto)
+\RequirePackage{textpos} % Para a criação de quadros com posição absoluta (para a capa e folha de rosto)
 
 \RequirePackage{calc}
 
