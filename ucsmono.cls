@@ -1,10 +1,10 @@
 %	Class desenvolvida por Henrique Baron em 14/07/2018.
 %	
 %	Formata um documento da classe abnTeX2 para o padrão exigido pela Universidade de Caxias do Sul para
-%	trabalhos de conclusão de curso.
+%	monografias.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{abntexucs}[2018/07/14 v1.0.0 abnTeXUCS]
+\ProvidesClass{ucsmono}[2018/07/14]
 \LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
