@@ -5,19 +5,17 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{abntexucs}[2018/07/14 v1.0.0 abnTeXUCS]
-\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
-\ProcessOptions\relax
+\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inclusão e configuração de pacotes
+
 % Verificação do compilador utilizado
 \RequirePackage{ifluatex}
 \ifluatex
 	% Se o documento está sendo compilado com LuaLaTeX, altera-se a fonte do modo matemático para ser igual à fonte do texto, e não ser em itálico.
 	\usepackage[math-style=upright]{unicode-math}
 \fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Inclusão e configuração de pacotes
 
 % Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries
 \let\su@ExpandTwoArgs\relax 
@@ -58,6 +56,9 @@
 
 \RequirePackage{chngcntr} % Alteração dos parâmetros de contadores de equações, figuras etc.
 \counterwithout{equation}{chapter} % Contagem das equações contínua ao longo do documento
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
+\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Criação da Lista de Quadros, não definida pela classe abntex2
