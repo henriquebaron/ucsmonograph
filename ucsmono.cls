@@ -8,6 +8,17 @@
 \LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declaração de variáveis
+\newboolean{listasAtivo}
+\setboolean{listasAtivo}{false}
+
+\newboolean{siglasAtivo}
+\setboolean{siglasAtivo}{false}
+
+\newboolean{simbolosAtivo}
+\setboolean{simbolosAtivo}{false}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inclusão e configuração de pacotes
 
 % Verificação do compilador utilizado
@@ -27,11 +38,6 @@
 \PassOptionsToPackage{top=3cm,left=3cm,bottom=2cm,right=2cm}{geometry}
 \RequirePackage{geometry} % Redefine e corrige as margens da página
 \flushbottom % Garante que o LaTeX utilize a margem inferior e faça o conteúdo se estender até ela
-
-\PassOptionsToPackage{record,toc=false,nonumberlist,style=long,acronyms,symbols}{glossaries-extra}
-\RequirePackage{glossaries-extra} % Criação da lista de símbolos
-\setabbreviationstyle[acronym]{long-short} % Define o estilo de exibição (no texto) das siglas em português
-\setabbreviationstyle[foreignabbreviation]{long-short-user} % Define o estilo de exibição (no texto) das siglas em outros idiomas.
 
 \RequirePackage{etoolbox} % Recursos de programação para LaTeX
 
@@ -57,8 +63,29 @@
 \RequirePackage{chngcntr} % Alteração dos parâmetros de contadores de equações, figuras etc.
 \counterwithout{equation}{chapter} % Contagem das equações contínua ao longo do documento
 
+
+\DeclareOption{siglas}{%
+	\PassOptionsToPackage{acronyms}{glossaries-extra}%
+	\setboolean{listasAtivo}{true}
+	\setboolean{siglasAtivo}{true}
+}
+\DeclareOption{simbolos}{%
+	\PassOptionsToPackage{symbols}{glossaries-extra}%
+	\setboolean{listasAtivo}{true}
+	\setboolean{simbolosAtivo}{true}
+}
+\PassOptionsToPackage{record,toc=false,nonumberlist,style=long,acronyms,symbols}{glossaries-extra}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\boolean{listasAtivo}}{%
+	\RequirePackage{glossaries-extra} % Criação da lista de símbolos
+	\setabbreviationstyle[acronym]{long-short} % Define o estilo de exibição (no texto) das siglas em português
+	\setabbreviationstyle[foreignabbreviation]{long-short-user} % Define o estilo de exibição (no texto) das siglas em outros idiomas.
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Criação da Lista de Quadros, não definida pela classe abntex2
