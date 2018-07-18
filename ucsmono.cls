@@ -63,28 +63,33 @@
 \RequirePackage{chngcntr} % Alteração dos parâmetros de contadores de equações, figuras etc.
 \counterwithout{equation}{chapter} % Contagem das equações contínua ao longo do documento
 
-
-\DeclareOption{siglas}{%
+\DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
-	\setboolean{listasAtivo}{true}
-	\setboolean{siglasAtivo}{true}
+	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
+	\setboolean{siglasAtivo}{true} % Lista de siglas está ativada
 }
-\DeclareOption{simbolos}{%
+\DeclareOption{simbolos}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
 	\PassOptionsToPackage{symbols}{glossaries-extra}%
-	\setboolean{listasAtivo}{true}
-	\setboolean{simbolosAtivo}{true}
+	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
+	\setboolean{simbolosAtivo}{true} % Lista de símbolos está ativada
 }
+
+% Criação de glossários. Nesta classe o glossaries-extra é utilizado apenas para a criação
+% das listas de siglas e de símbolos.
 \PassOptionsToPackage{record,toc=false,nonumberlist,style=long,acronyms,symbols}{glossaries-extra}
 
+% Passa as opções não tratadas para a classe abntex2.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chamada e configuração do pacote glossaries-extra, de acordo com as opções selecionadas
 
 \ifthenelse{\boolean{listasAtivo}}{%
-	\RequirePackage{glossaries-extra} % Criação da lista de símbolos
+	\RequirePackage{glossaries-extra} %
 	\setabbreviationstyle[acronym]{long-short} % Define o estilo de exibição (no texto) das siglas em português
 	\setabbreviationstyle[foreignabbreviation]{long-short-user} % Define o estilo de exibição (no texto) das siglas em outros idiomas.
+	\setlength{\glsdescwidth}{\linewidth} % Ajusta a largura da tabela interna da lista de símbolos
 }{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,8 +130,6 @@
 \AtBeginDocument{\setlength\abovedisplayskip{14pt plus 4pt minus 2pt}}
 \AtBeginDocument{\setlength\belowdisplayskip{14pt plus 4pt minus 2pt}}
 \setlength\jot{10pt plus 4pt minus 2pt} % Espaço entre equações dos ambientes do pacote amsmath
-
-\setlength{\glsdescwidth}{\linewidth} % Ajusta a largura da tabela interna da lista de símbolos
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Modificações de comandos específicos da classe abnTeX2 para adequar ao padrão da UCS
@@ -217,20 +220,20 @@
 	\expandafter\uppercase\expandafter{\thedate}%
 }
 
-
 % Redefinição de comandos do pacote glossaries-extra
-
-% \glsxtruserparen{text}{label} - Define o conteúdo entre os parênteses quando a key "user1" estiver preenchida.
-\renewcommand{\glsxtruserparen}[2]{%
-	\glsxtrfullsep{#2}%
-	\glsxtrparen
-	{#1\ifglshasfield{\glsxtruserfield}{#2}{, \emph{\glscurrentfieldvalue}}{}}%
-}
-
-% \glsuserdescription{text}{label} - Define o texto longo (descrição) que será exibido na lista de símbolos/siglas 
-\renewcommand{\glsuserdescription}[2]{%
-	\ifglshasfield{\glsxtruserfield}{#2}{\emph{\glscurrentfieldvalue}}{#1}%
-}
+\ifthenelse{\boolean{siglasAtivo}}{%
+	% \glsxtruserparen{text}{label} - Define o conteúdo entre os parênteses quando a key "user1" estiver preenchida.
+	\renewcommand{\glsxtruserparen}[2]{%
+		\glsxtrfullsep{#2}%
+		\glsxtrparen
+		{#1\ifglshasfield{\glsxtruserfield}{#2}{, \emph{\glscurrentfieldvalue}}{}}%
+	}
+	
+	% \glsuserdescription{text}{label} - Define o texto longo (descrição) que será exibido na lista de símbolos/siglas 
+	\renewcommand{\glsuserdescription}[2]{%
+		\ifglshasfield{\glsxtruserfield}{#2}{\emph{\glscurrentfieldvalue}}{#1}%
+	}
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Outros comandos %%%
@@ -334,26 +337,38 @@
 	\end{minipage}
 }
 
-% Inclusão do arquivo para a lista de siglas
-\newcommand{\incluirsiglas}[1]{%
-\GlsXtrLoadResources[%
-	src  = {#1},
-	sort = {pt-BR},
-	type = {acronym},
-	entry-type-aliases={% make @foreignabbreviation act like @abbreviation
-		foreignabbreviation=abbreviation},
-	field-aliases={%
-		foreignlong=user1,
-		nativelong=long},
-	category={same as original entry}% requires bib2gls v1.4+
-	]
-}
-
-% Inclusão do arquivo para a lista de símbolos
-\newcommand{\incluirsimbolos}[1]{%
+\ifthenelse{\boolean{siglasAtivo}}{%
+	% Comandos só são definidos se a criação da lista de siglas está habilitada
+	% Inclusão do arquivo para a lista de siglas
+	\newcommand{\incluirsiglas}[1]{%
 	\GlsXtrLoadResources[%
-	src = {#1},
-	sort = {use},
-	type = {symbols}
-	]%
-}
+		src  = {#1},
+		sort = {pt-BR},
+		type = {acronym},
+		entry-type-aliases={% make @foreignabbreviation act like @abbreviation
+			foreignabbreviation=abbreviation},
+		field-aliases={%
+			foreignlong=user1,
+			nativelong=long},
+		category={same as original entry}% requires bib2gls v1.4+
+		]
+	}
+
+	% Exibição da lista de siglas
+	\newcommand*{\listofsiglas}{\printunsrtglossary[type=acronym,title=\listadesiglasname]}
+}{}
+
+\ifthenelse{\boolean{simbolosAtivo}}{%
+	% Comandos só são definidos se a criação da lista de símbolos está habilitada
+	% Inclusão do arquivo para a lista de símbolos
+	\newcommand{\incluirsimbolos}[1]{%
+		\GlsXtrLoadResources[%
+		src = {#1},
+		sort = {use},
+		type = {symbols}
+		]%
+	}
+
+	% Exibição da lista de símbolos
+	\newcommand*{\listofsimbolos}{\printunsrtglossary[type=symbols,title=\listadesimbolosname]}
+}{}
