@@ -99,13 +99,13 @@
 \newcommand{\quadroname}{Quadro}
 \newcommand{\listquadroname}{Lista de quadros}
 
-\newfloat{quadro}{\quadroname}{toq}[chapter] % Declara o ambiente tipo float para  quadro
+\newfloat{quadro}{\quadroname}{loq}[chapter] % Declara o ambiente tipo float para quadro
 \restylefloat*{quadro} % Redefine o estilo e configura que não é o package float o responsável pela sua formatação
 \setfloatadjustment{quadro}{\centering} % Define posicionamento horizontal dos quadros
 \setfloatlocations{quadro}{hbtp} % Posicionamento vertical padrão dos quadros
 
-\newlistof{listofquadros}{toq}{\listquadroname} % Declara a lista de quadros e cria o arquivo .TOQ
-\newlistentry{quadro}{toq}{0} % Define que floats tipo quadro serão incluídos no arquivo .TOQ
+\newlistof{listofquadros}{loq}{\listquadroname} % Declara a lista de quadros e cria o arquivo .LOQ
+\newlistentry{quadro}{loq}{0} % Define que floats tipo quadro serão incluídos no arquivo .LOQ
 
 \renewcommand{\cftquadroname}{\quadroname\space} % Exibição "Quadro " nas linhas da Lista de Quadros
 \renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill} % Separador após o número do quadro na Lista de Quadros
