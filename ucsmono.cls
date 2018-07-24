@@ -5,9 +5,9 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ucsmono}[2018/07/14]
-\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{ifthen}
+
 % Declaração de variáveis
 \newboolean{listasAtivo}
 \setboolean{listasAtivo}{false}
@@ -17,6 +17,21 @@
 
 \newboolean{simbolosAtivo}
 \setboolean{simbolosAtivo}{false}
+
+\DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
+	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
+	\setboolean{siglasAtivo}{true} % Lista de siglas está ativada
+}
+
+\DeclareOption{simbolos}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
+	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
+	\setboolean{simbolosAtivo}{true} % Lista de símbolos está ativada
+}
+
+% Passa as opções não tratadas para a classe abntex2.
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
+\ProcessOptions\relax
+\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inclusão e configuração de pacotes
@@ -63,24 +78,17 @@
 \RequirePackage{chngcntr} % Alteração dos parâmetros de contadores de equações, figuras etc.
 \counterwithout{equation}{chapter} % Contagem das equações contínua ao longo do documento
 
-\DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
+\ifthenelse{\boolean{siglasAtivo}}{%
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
-	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
-	\setboolean{siglasAtivo}{true} % Lista de siglas está ativada
 }
-\DeclareOption{simbolos}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
+
+\ifthenelse{\boolean{simbolosAtivo}}{%
 	\PassOptionsToPackage{symbols}{glossaries-extra}%
-	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
-	\setboolean{simbolosAtivo}{true} % Lista de símbolos está ativada
 }
 
 % Criação de glossários. Nesta classe o glossaries-extra é utilizado apenas para a criação
 % das listas de siglas e de símbolos.
 \PassOptionsToPackage{record,toc=false,nonumberlist,style=long,acronyms,symbols}{glossaries-extra}
-
-% Passa as opções não tratadas para a classe abntex2.
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
-\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chamada e configuração do pacote glossaries-extra, de acordo com as opções selecionadas
