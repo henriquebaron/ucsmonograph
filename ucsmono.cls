@@ -6,17 +6,22 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ucsmono}[2018/07/14]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declaração de variáveis
+
 \RequirePackage{ifthen}
 
-% Declaração de variáveis
-\newboolean{listasAtivo}
+\newboolean{listasAtivo} % Uso de listas automáticas do glossaries-extra ativo
 \setboolean{listasAtivo}{false}
 
-\newboolean{siglasAtivo}
+\newboolean{siglasAtivo} % Criação automática da lista de siglas ativa
 \setboolean{siglasAtivo}{false}
 
-\newboolean{simbolosAtivo}
+\newboolean{simbolosAtivo} % Criação automática da lista de símbolos ativa
 \setboolean{simbolosAtivo}{false}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declaração de opções
 
 \DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
 	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
@@ -31,7 +36,7 @@
 % Passa as opções não tratadas para a classe abntex2.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
-\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que extende abnTeX2.
+\LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2} % Classe que estende abnTeX2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Inclusão e configuração de pacotes
