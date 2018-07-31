@@ -83,6 +83,8 @@
 \RequirePackage{chngcntr} % Alteração dos parâmetros de contadores de equações, figuras etc.
 \counterwithout{equation}{chapter} % Contagem das equações contínua ao longo do documento
 
+\RequirePackage{suffix} % Para criar os starred commands
+
 \ifthenelse{\boolean{siglasAtivo}}{%
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
 }
@@ -368,7 +370,13 @@
 	}
 
 	% Exibição da lista de siglas
-	\newcommand*{\listofsiglas}{\printunsrtglossary[type=acronym,title=\listadesiglasname]}
+	% Por algum motivo, o comando \printunsrtglossary incrementa o contador table em uma
+	% unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.
+	% O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados
+	\WithSuffix\newcommand\listofsiglas*{%
+		\printunsrtglossary[type=acronym,title=\listadesiglasname]%
+		\addtocounter{table}{-1}%
+	}
 }{}
 
 \ifthenelse{\boolean{simbolosAtivo}}{%
@@ -383,5 +391,11 @@
 	}
 
 	% Exibição da lista de símbolos
-	\newcommand*{\listofsimbolos}{\printunsrtglossary[type=symbols,title=\listadesimbolosname]}
+	% Por algum motivo, o comando \printunsrtglossary incrementa o contador table em uma
+	% unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.
+	% O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados
+	\WithSuffix\newcommand\listofsimbolos*{%
+		\printunsrtglossary[type=symbols,title=\listadesimbolosname]%
+		\addtocounter{table}{-1}% 
+	}
 }{}
