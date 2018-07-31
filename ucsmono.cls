@@ -1,4 +1,4 @@
-%	Class desenvolvida por Henrique Baron em 14/07/2018.
+%	Classe desenvolvida por Henrique Baron em 14/07/2018.
 %	
 %	Formata um documento da classe abnTeX2 para o padrão exigido pela Universidade de Caxias do Sul para
 %	monografias.
@@ -22,6 +22,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Declaração de opções
+
+\RequirePackage{kvoptions}
+\DeclareStringOption[alf]{cite}
+\ProcessKeyvalOptions*
 
 \DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
 	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
@@ -47,6 +51,14 @@
 	% Se o documento está sendo compilado com LuaLaTeX, altera-se a fonte do modo matemático para ser igual à fonte do texto, e não ser em itálico.
 	\usepackage[math-style=upright]{unicode-math}
 \fi
+
+% Referências a bibliografia no padrão ABNT. Opções: citações numeradas, com sobrescrito e substituindo listas com mais de dois autores por "et al." e escrevendo o "et al." em itálico.
+\RequirePackage[\ucsmono@cite,abnt-etal-list=3,abnt-etal-text=it,abnt-full-initials=no]{abntex2cite}
+
+\ifthenelse{\equal{\ucsmono@cite}{num}}{% Se estiver configurada citação numérica
+	\citebrackets[] % Configura para que as citações sejam feitas entre colchetes.
+	\RequirePackage{cite} % Para a citação numérica, permite as citações múltiplas como [8-11], por exemplo
+}{}
 
 % Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries
 \let\su@ExpandTwoArgs\relax 
@@ -85,11 +97,11 @@
 
 \RequirePackage{suffix} % Para criar os starred commands
 
-\ifthenelse{\boolean{siglasAtivo}}{%
+\ifthenelse{\boolean{siglasAtivo}}{% Se a lista de siglas automática está habilitada
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
 }
 
-\ifthenelse{\boolean{simbolosAtivo}}{%
+\ifthenelse{\boolean{simbolosAtivo}}{% Se a lista de símbolo automática está habilitada
 	\PassOptionsToPackage{symbols}{glossaries-extra}%
 }
 
@@ -235,6 +247,9 @@
 	\expandafter\uppercase\expandafter{\thedate}%
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outros comandos
+
 % Redefinição de comandos do pacote glossaries-extra
 \ifthenelse{\boolean{siglasAtivo}}{%
 	% \glsxtruserparen{text}{label} - Define o conteúdo entre os parênteses quando a key "user1" estiver preenchida.
@@ -249,9 +264,6 @@
 		\ifglshasfield{\glsxtruserfield}{#2}{\emph{\glscurrentfieldvalue}}{#1}%
 	}
 }{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Outros comandos %%%
 
 % Faz com que os nomes das seções no sumário sejam escritos em letra maiúscula.
 \let\oldcontentsline\contentsline
