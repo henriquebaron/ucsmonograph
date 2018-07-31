@@ -11,6 +11,9 @@
 
 \RequirePackage{ifthen}
 
+\newboolean{lmodernAtivo} % Chamada do pacote lmodern (para fonte Latin Modern) habilitada
+\setboolean{lmodernAtivo}{false}
+
 \newboolean{listasAtivo} % Uso de listas automáticas do glossaries-extra ativo
 \setboolean{listasAtivo}{false}
 
@@ -23,9 +26,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Declaração de opções
 
+%%% Opções do tipo par key-value, trazidas pelo pacote kvoptions
 \RequirePackage{kvoptions}
 \DeclareStringOption[alf]{cite}
 \ProcessKeyvalOptions*
+%%%
+
+\DeclareOption{lmodern}{% Altera a fonte do documento para Latin Modern, uma evolução à fonte Computer Modern, padrão do LaTeX.
+	\setboolean{lmodernAtivo}{true}%
+}
 
 \DeclareOption{siglas}{% Habilitar a criação da lista de siglas com o glossaries-extra e o script bib2gls
 	\setboolean{listasAtivo}{true} % Pacote glossaries-extra ativado
@@ -64,6 +73,10 @@
 \let\su@ExpandTwoArgs\relax 
 \let\IfSubStringInString\relax 
 \let\su@IfSubStringInString\relax
+
+\ifthenelse{\boolean{lmodernAtivo}}{%
+	\RequirePackage{lmodern}% Habilita a fonte Latin Modern
+}{}
 
 \RequirePackage{caption}
 
