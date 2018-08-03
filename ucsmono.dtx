@@ -84,4 +84,32 @@
 %\section{Uso}
 %Esta classe é uma extensão da classe \texttt{abntex2} e grande parte das funções a serem utilizadas em um documento escrito com a classe \texttt{ucsmono} utilizará as macros desta classe. Recomenda-se consultar o manual da classe \texttt{abntex2} para informações detalhadas destas instruções.
 %
-%Em detalhe, esta classe redefine alguns parâmetros da classe-pai, além de tentar simplificar o seu uso para iniciantes do \LaTeX. Para usuários avançados, recursos de geração automática de listas de símbolos e siglas estão disponíveis.
+%Em detalhe, esta classe redefine alguns parâmetros da classe \texttt{abntex2}, além de tentar simplificar o seu uso para iniciantes do \LaTeX. Para usuários avançados, recursos de geração automática de listas de símbolos e siglas estão disponíveis.
+%\DescribeMacro{\imprimirfolhadeaprovacao[instituição do avaliador externo]{Data de aprovação no formato DD/MM/AAAA}{Professor 1 da banca}{Professor 2 da banca}{Avaliador externo}}
+%Imprime a folha de aprovação no padrão solicitado pela UCS, com os espaços para as assinaturas. Não é preciso entrar com o nome do orientador, visto que o nome deste já deve ter sido configurado no preâmbulo do documento com a macro \texttt{\verb{\orientador{nome}}}. O parâmetro opcional, que pode ser utilizado para definir a instituição do avaliador externo, é definida por padrão como Universidade de Caxias do Sul - UCS.
+%
+%\DescribeMacro{\incluirimagem[escala]{Caminho da imagem}{Título}{Fonte e ano}}
+%Insere a imagem especificada. Este comando é um encapsulamento da macro padrão do \LaTeX \texttt{\verb{\includegraphics}}, com algumas funcionalidades para ajustar a descrição corretamente. Por conta disso, ela deve ser utilizada em um ambiente flutuante como \texttt{figure}.
+%
+%\StopEventually{}
+%
+%\section{Implementa\c{c}\~{a}o}
+%\begin{macro}
+%Declaração de variáveis: Chamada do pacote lmodern; uso de listas automáticas do glossaries-extra ativo; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+
+\newboolean{lmodernAtivo}
+\setboolean{lmodernAtivo}{false}
+
+\newboolean{listasAtivo}
+\setboolean{listasAtivo}{false}
+
+\newboolean{siglasAtivo}
+\setboolean{siglasAtivo}{false}
+
+\newboolean{simbolosAtivo}
+\setboolean{simbolosAtivo}{false}
+%    \end{macrocode}
+%\end{macro}
+%\Finale
