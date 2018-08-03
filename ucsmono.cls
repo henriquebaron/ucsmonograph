@@ -327,7 +327,7 @@
 % 3 - Nome do primeiro professor da banca (sem ser o orientador)
 % 4 - Nome do segundo professor da banca (sem ser o orientador)
 % 5 - Nome do professor/convidado externo
-\newcommand{\imprimirfolhadeaprovacaoUCS}[5][Universidade de Caxias do Sul - UCS]{%
+\newcommand{\imprimirfolhadeaprovacao}[5][Universidade de Caxias do Sul - UCS]{%
 	\begin{folhadeaprovacao}%
 		\begin{center}%
 			\bfseries %
