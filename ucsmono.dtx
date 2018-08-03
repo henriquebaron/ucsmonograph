@@ -18,10 +18,10 @@
 % and the derived file ucsmono.cls.
 %
 % Classe ucsmono
-% Formata um documento da classe abnTeX2 para o padrão exigido pela Universidade de Caxias do Sul para
+% Formata um documento da classe abnTeX2 para o padr\~{a}o exigido pela Universidade de Caxias do Sul para
 % monografias.
 % 
-% DÚVIDAS E SUGESTÕES: Entre em contato através do perfil do desenvolvedor no TeX Stack Exchange:
+% DÚVIDAS E SUGEST\~{o}ES: Entre em contato através do perfil do desenvolvedor no TeX Stack Exchange:
 % https://tex.stackexchange.com/users/153467/henrique-baron
 %
 %\fi
@@ -54,18 +54,18 @@
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case	\a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-% 	Digits		\0\1\2\3\4\5\6\7\8\9
-% 	Exclamation	\!		Double quote 	\"		Hash (number)	\#
-%	Dollar 			\$ 		Percent 		\%		Ampersand 		\&
-% 	Acute accent 	\’ 		Left paren 	\( 		Right paren 	\)
-% 	Asterisk 		\* 		Plus 			\+ 		Comma 			\,
-% 	Minus 			\- 		Point 			\. 		Solidus 		\/
-% 	Colon 			\: 		Semicolon 		\; 		Less than 		\<
-% 	Equals 			\= 		Greater than 	\> 		Question mark 	\?
-% 	Commercial at 	\@ 		Left bracket 	\[ 		Backslash 		\\
-% 	Right bracket 	\] 		Circumflex 	\^ 		Underscore 	\_
-% 	Grave accent 	\‘ 		Left brace 	\{ 		Vertical bar 	\|
-% 	Right brace 	\} 		Tilde 			\~}
+% 	Digits \0\1\2\3\4\5\6\7\8\9
+% 	Exclamation \!	 Double quote \" Hash (number) \#
+%	Dollar \$ Percent \% Ampersand \&
+% 	Acute accent \' Left paren \( Right paren \)
+% 	Asterisk \* Plus \+ Comma \,
+% 	Minus \- Point \. Solidus \/
+% 	Colon \: Semicolon \; Less than \<
+% 	Equals \= Greater than \> Question mark \?
+% 	Commercial at \@ Left bracket \[ Backslash \\
+% 	Right bracket \] Circumflex \^ Underscore \_
+% 	Grave accent \` Left brace \{ Vertical bar \|
+% 	Right brace \} Tilde \~}
 %
 %\changes{v1.0}{2018/07/31}{Vers\~{a}o inicial}
 %
@@ -79,23 +79,24 @@
 %\maketitle
 %
 %\section{Introducao}
-%Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este código foi desenvolvido tendo por base a versão 2018 do documento.
+%Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elabora\c{c}\~{a}o de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este c\'{o}digo foi desenvolvido tendo por base a vers\~{a}o 2018 do documento.
 %
 %\section{Uso}
-%Esta classe é uma extensão da classe \texttt{abntex2} e grande parte das funções a serem utilizadas em um documento escrito com a classe \texttt{ucsmono} utilizará as macros desta classe. Recomenda-se consultar o manual da classe \texttt{abntex2} para informações detalhadas destas instruções.
+%Esta classe é uma extens\~{a}o da classe \texttt{abntex2} e grande parte das fun\c{c}\~{o}es a serem utilizadas em um documento escrito com a classe \texttt{ucsmono} utilizar\'{a} as macros desta classe. Recomenda-se consultar o manual da classe \texttt{abntex2} para informa\c{c}\~{o}es detalhadas destas instru\c{c}\~{o}es.
 %
-%Em detalhe, esta classe redefine alguns parâmetros da classe \texttt{abntex2}, além de tentar simplificar o seu uso para iniciantes do \LaTeX. Para usuários avançados, recursos de geração automática de listas de símbolos e siglas estão disponíveis.
-%\DescribeMacro{\imprimirfolhadeaprovacao[instituição do avaliador externo]{Data de aprovação no formato DD/MM/AAAA}{Professor 1 da banca}{Professor 2 da banca}{Avaliador externo}}
-%Imprime a folha de aprovação no padrão solicitado pela UCS, com os espaços para as assinaturas. Não é preciso entrar com o nome do orientador, visto que o nome deste já deve ter sido configurado no preâmbulo do documento com a macro \texttt{\verb{\orientador{nome}}}. O parâmetro opcional, que pode ser utilizado para definir a instituição do avaliador externo, é definida por padrão como Universidade de Caxias do Sul - UCS.
+%Em detalhe, esta classe redefine alguns parâmetros da classe \texttt{abntex2}, além de tentar simplificar o seu uso para iniciantes do \LaTeX. Para usu\'{a}rios avan\c{c}ados, recursos de gera\c{c}\~{a}o autom\'{a}tica de listas de símbolos e siglas est\~{a}o disponíveis.
 %
-%\DescribeMacro{\incluirimagem[escala]{Caminho da imagem}{Título}{Fonte e ano}}
-%Insere a imagem especificada. Este comando é um encapsulamento da macro padrão do \LaTeX \texttt{\verb{\includegraphics}}, com algumas funcionalidades para ajustar a descrição corretamente. Por conta disso, ela deve ser utilizada em um ambiente flutuante como \texttt{figure}.
+%\DescribeMacro{\imprimirfolhadeaprovacao[instituicao]{Data de aprovacao no formato DD/MM/AAAA}{Professor 1 da banca}{Professor 2 da banca}{Avaliador externo}}
+%Imprime a folha de aprova\c{c}\~{a}o no padr\~{a}o solicitado pela UCS, com os espa\c{c}os para as assinaturas. N\~{a}o é preciso entrar com o nome do orientador, visto que o nome deste j\'{a} deve ter sido configurado no preâmbulo do documento com a macro \texttt{\verb{\orientador{nome}}}. O par\^{a}metro opcional, que pode ser utilizado para definir a institui\c{c}\~{a}o do avaliador externo, é definida por padr\~{a}o como Universidade de Caxias do Sul - UCS.
+%
+%\DescribeMacro{\incluirimagem[escala]{Caminho da imagem}{Titulo}{Fonte e ano}}
+%Insere a imagem especificada. Este comando é um encapsulamento da macro padr\~{a}o do \LaTeX \texttt{\verb{\includegraphics}}, com algumas funcionalidades para ajustar a descri\c{c}\~{a}o corretamente. Por conta disso, ela deve ser utilizada em um ambiente flutuante como \texttt{figure}.
 %
 %\StopEventually{}
 %
 %\section{Implementa\c{c}\~{a}o}
 %\begin{macro}
-%Declaração de variáveis: Chamada do pacote lmodern; uso de listas automáticas do glossaries-extra ativo; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
+%Declara\c{c}\~{a}o de vari\'{a}veis: Chamada do pacote lmodern; uso de listas autom\'{a}ticas do glossaries-extra ativo; cria\c{c}\~{a}o autom\'{a}tica da lista de siglas ativa; e cria\c{c}\~{a}o autom\'{a}tica da lista de símbolos ativa.
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 
