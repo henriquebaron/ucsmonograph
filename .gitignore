@@ -1,0 +1,25 @@
+# Atalhos do windows
+*.lnk
+
+# LaTeX generated files
+*.pdf
+*.log
+*.dvi
+*.ps
+*.gz
+*.aux
+*.toc
+*.bbl
+*.blg
+*.lof
+*.lot
+*.synctex(busy)
+
+# Makeindex and Makeglossaries generated files
+*.ilg
+*.glg
+*.gls
+*.glo
+*.fls
+*.ist
+*.idx

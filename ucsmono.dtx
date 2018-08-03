@@ -21,7 +21,7 @@
 % Formata um documento da classe abnTeX2 para o padr\~{a}o exigido pela Universidade de Caxias do Sul para
 % monografias.
 % 
-% DÚVIDAS E SUGEST\~{o}ES: Entre em contato através do perfil do desenvolvedor no TeX Stack Exchange:
+% DÚVIDAS E SUGEST\~{o}ES: Entre em contato atrav\'{e}s do perfil do desenvolvedor no TeX Stack Exchange:
 % https://tex.stackexchange.com/users/153467/henrique-baron
 %
 %\fi
@@ -34,7 +34,7 @@
 %<package>\ProvidesClass{ucsmono}[2018/07/31]
 %<*package>
 	[2018/07/31 v1.0 Formatacao de monografias no padrao UCS]
-%</package}
+%</package>
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -49,7 +49,7 @@
 %</driver>
 %\fi
 
-\CheckSum{0}
+% \CheckSum{0}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -82,35 +82,14 @@
 %Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elabora\c{c}\~{a}o de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este c\'{o}digo foi desenvolvido tendo por base a vers\~{a}o 2018 do documento.
 %
 %\section{Uso}
-%Esta classe é uma extens\~{a}o da classe \texttt{abntex2} e grande parte das fun\c{c}\~{o}es a serem utilizadas em um documento escrito com a classe \texttt{ucsmono} utilizar\'{a} as macros desta classe. Recomenda-se consultar o manual da classe \texttt{abntex2} para informa\c{c}\~{o}es detalhadas destas instru\c{c}\~{o}es.
-%
-%Em detalhe, esta classe redefine alguns parâmetros da classe \texttt{abntex2}, além de tentar simplificar o seu uso para iniciantes do \LaTeX. Para usu\'{a}rios avan\c{c}ados, recursos de gera\c{c}\~{a}o autom\'{a}tica de listas de símbolos e siglas est\~{a}o disponíveis.
-%
-%\DescribeMacro{\imprimirfolhadeaprovacao[instituicao]{Data de aprovacao no formato DD/MM/AAAA}{Professor 1 da banca}{Professor 2 da banca}{Avaliador externo}}
-%Imprime a folha de aprova\c{c}\~{a}o no padr\~{a}o solicitado pela UCS, com os espa\c{c}os para as assinaturas. N\~{a}o é preciso entrar com o nome do orientador, visto que o nome deste j\'{a} deve ter sido configurado no preâmbulo do documento com a macro \texttt{\verb{\orientador{nome}}}. O par\^{a}metro opcional, que pode ser utilizado para definir a institui\c{c}\~{a}o do avaliador externo, é definida por padr\~{a}o como Universidade de Caxias do Sul - UCS.
-%
-%\DescribeMacro{\incluirimagem[escala]{Caminho da imagem}{Titulo}{Fonte e ano}}
-%Insere a imagem especificada. Este comando é um encapsulamento da macro padr\~{a}o do \LaTeX \texttt{\verb{\includegraphics}}, com algumas funcionalidades para ajustar a descri\c{c}\~{a}o corretamente. Por conta disso, ela deve ser utilizada em um ambiente flutuante como \texttt{figure}.
-%
+% Teste
 %\StopEventually{}
 %
 %\section{Implementa\c{c}\~{a}o}
 %\begin{macro}
-%Declara\c{c}\~{a}o de vari\'{a}veis: Chamada do pacote lmodern; uso de listas autom\'{a}ticas do glossaries-extra ativo; cria\c{c}\~{a}o autom\'{a}tica da lista de siglas ativa; e cria\c{c}\~{a}o autom\'{a}tica da lista de símbolos ativa.
+%Descricao
 %    \begin{macrocode}
-\RequirePackage{ifthen}
-
-\newboolean{lmodernAtivo}
-\setboolean{lmodernAtivo}{false}
-
-\newboolean{listasAtivo}
-\setboolean{listasAtivo}{false}
-
-\newboolean{siglasAtivo}
-\setboolean{siglasAtivo}{false}
-
-\newboolean{simbolosAtivo}
-\setboolean{simbolosAtivo}{false}
+\RequirePackage{ifthen}%
 %    \end{macrocode}
 %\end{macro}
 %\Finale
