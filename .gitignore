@@ -1,5 +1,7 @@
-# Arquivo de classe (que aqui é uma saída de compilação"
+# Saídas de compilação
 *.cls
+*.tds
+*.zip
 
 # Atalhos do windows
 *.lnk
