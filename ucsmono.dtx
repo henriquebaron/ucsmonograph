@@ -39,18 +39,19 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
 \begin{document}
 	\DocInput{ucsmono.dtx}
-	\PrintChanges
-	\PrintIndex
 \end{document}
 %</driver>
 %\fi
 
-% \CheckSum{0}
+% \CheckSum{416}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -80,18 +81,103 @@
 %\maketitle
 %
 %\section{Introdução}
-%Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este código foi desenvolvido tendo por base a versão 2018 do documento.
+% Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia no assunto, abstraindo algumas configurações de formatação e comandos mais complexos.
 %
-%\section{Uso}
-%Descrever a utilização deste documento.
+% A classe |ucsmono| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT. O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
+%
+%\subsection{Se seu documento possui fórmulas}
+% Pode ser necessário compilar o trabalho com Lua\LaTeX. Mesmo para iniciantes no \LaTeX, essa não é uma mudança complicada, e pode ser necessária para atender uma exigência da UCS. Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente. Isso serve para deixar o documento de fato mais legível e mais ''bonito'', e é possível negociar com os responsáveis se existe margem para manter essa diferença de fontes entre texto e equações.
+%
+% Caso não seja permitido, é o ponto onde o Lua\LaTeX~entra. No pdf\LaTeX~não é possível alterar a fonte do texto matemático. Por conta disso, a classe |ucsmono| é preparada para carregar conjuntos de caracteres e a fonte Latin Modern automaticamente se o documento estiver sendo compilado com o Lua\LaTeX. 
+%
+%\section{Utilização}
+% Para utilizar a classe |ucsmono|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas. Este manual descreve apenas os comandos desenvolvidos na própria classe |ucsmono| e outras redefinições de comandos que podem ser pertinentes ao usuário.
+%
+%\subsection{Chamada da classe e opções}
+%\DescribeMacro{\documentclass}
+% A classe pode ser chamada com as opções-padrão que são nativas do \LaTeX~e são encaminhadas para a classe |abntex2|. Um exemplo típico para chamar a classe ao iniciar o documento pode ser
+%\begin{verbatim}
+%	\documentclass[12pt,oneside,english,brazil]{ucsmono}
+%\end{verbatim}
+%Outras opções que podem ser alteradas ou acrescentadas a essa chamada são exibidas abaixo.
+%
+%\DescribeMacro{oneside}
+% Essa opção pode ser substituída por |twoside| para que o documento seja impresso em frente-e-verso. Embora seja permitido pelo Guia da UCS, isso é vedado pela especificação de alguns cursos, como em engenharias.
+%
+%\DescribeMacro{english,brazil}
+% As opções de idiomas podem ser alteradas, de modo que \emph{o idioma principal seja sempre o último}. Ou seja, outros exemplos para este par de opções seriam |spanish,brazil| ou |german,brazil|.
+%
+%\DescribeMacro{lmodern}
+% Habilita a fonte Latin Modern -- que é uma ''evolução'' à fonte Computer Modern, tradicional do \LaTeX~-- e é equivalente a chamar o seguinte código no preâmbulo do trabalho: |\usepackage{lmodern}|.
+%
+%\DescribeMacro{cite=}
+% Define como é o tipo de citação no documento. O valor dado a essa chave é passado diretamente para a classe |abntex2cite|, e ela pode ser preenchida como: |cite=alf|, que é o valor-padrão, para citações do tipo ''(AUTOR, 2018)''; ou |cite=num| para citações numéricas, no estilo de artigos científicos, que \emph{são permitidas pelo guia da UCS.}
+%
+%\DescribeMacro{siglas}
+% Habilita a produção automática da lista de siglas através de um arquivo |.bib|, semelhante ao de bibliografia. Isso é feito através da chamada do pacote |glossaries-extra| com a opção |record|, e é preciso rodar o script |bib2gls| para que a lista seja gerada. Mais informações sobre o uso do |glossaries-extra| com o |bib2gls| podem ser encontradas na documentação deste pacote. Cabe ressaltar que, pela necessidade de uso desse script, essa opção \emph{não é compatível com editores \LaTeX~on-line}.
+%
+% Para o caso dos editores online, a lista de siglas deve ser criada manualmente com o ambiente |siglas|, documentado no manual da classe |abntex2|.
+%
+%\DescribeMacro{simbolos}
+% De maneira semelhante à opção |siglas|, habilita a geração automática da lista de símbolos. Essa opção também \emph{não é compatível com editores \LaTeX~on-line}.
+%
+% Também para o caso dos editores online, a lista de símbolos pode ser feita manualmente no ambiente |simbolos|, documentado no manual da classe |abntex2|.
+%
+%\subsection{Quadros e lista de quadros}
+% Por padrão, o \LaTeX~já oferece meios de criar tabelas e a lista de tabelas. Para o caso dos quadros, que são um elemento obrigatório pelo Guia da UCS, não há nenhum recurso desenvolvido, nem na classe |abntex2|. Para isso, o ambiente |quadro| foi criado na classe |ucsmono|.
+%
+%\DescribeEnv{quadro}
+% É um ambiente flutuante semelhante a |figure| ou |table|. Dentro dele pode ser inserida a imagem de um quadro diretamente, com a macro |\incluirimagem|, ou pode ser criado manualmente o quadro com o ambiente |tabular| e utilizando a macro |caption| para definir uma legenda.
+%
+%\DescribeMacro{\listofquadros}
+% Gera a lista de quadros, inserindo a entrada para a Lista de Quadros no sumário. É recomendado utilizar a macro |\listofquadros*|, que não insere a Lista de Quadros no sumário, conforme prescreve o Guia da UCS.
+%
+%\DescribeMacro{\listofquadros*}
+% Gera a lista de quadros, sem colocar essa entrada no sumário.
+%
+%\subsection{Outras redefinições}
+% Macros fornecidas por outros pacotes ou classes e que foram alteradas na classe |ucsmono| são descritas aqui.
+%
+%\DescribeMacro{\foreignlanguage}
+% Foi alterada para colocar em itálico o texto em idioma estrangeiro. Como essa macro considera o padrão de hifenização da linguagem definida no parâmetro obrigatório \marg{language}, é recomendado utilizá-la sempre que se desejar digitar conteúdo em um idioma diferente do padrão do documento.
+%
+%\subsection{Comandos específicos}
+% A classe |ucsmono| define alguns comandos próprios, que são detalhados aqui.
+%
+%\DescribeMacro{\imprimirfolhadeaprovacao}
+% Gera a folha de aprovação no padrão solicitado pela UCS, e recebe até cinco argumentos:
+%\begin{verbatim}
+%	\imprimirfolhadeaprovacao[inst.aval.ext.]{data aprov.}{aval. 1}{aval. 2}{aval.ext}
+%\end{verbatim}
+% O parâmetro opcional \meta{inst. aval. ext.} define a instituição ou empresa de onde vem o avaliador convidado. Caso não preenchida, a instituição é definida como ''UCS -- Universidade de Caxias do Sul''. Os outros parâmetros obrigatórios definem, respectivamente, a data de aprovação, o nome dos dois avaliadores da UCS, e o nome do avaliador externo (convidado). O nome do orientador do trabalho -- que aparece também na folha de aprovação -- não é necessário nesta macro, visto que ele deve ser definido no preâmbulo do documento pela macro |\orientador|\marg{nome}, definida na classe |abntex2|.
+%
+%\DescribeMacro{\incluirimagem}
+% Encapsula o comando |\includegraphics|, padrão do \LaTeX, acrescentando alguns elementos gráficos. Esta macro deve ser utilizada dentro de um ambiente |figure| e é chamada da seguinte forma:
+%\begin{verbatim}
+%	\incluirimagem[escala]{caminho}{descrição}{fonte e ano}
+%\end{verbatim}
+% O parâmetro opcional \meta{escala} é um valor decimal que define a escala de aumento ou redução da imagem. O valor padrão é 1. Os outros parâmetros indicam o caminho para o arquivo de imagem, a descrição -- que aparecerá acima da imagem, após o número -- e o nome da fonte e ano da imagem, que aparecem abaixo da ilustração, em fonte reduzida.
+%
+%\DescribeMacro{\incluirsiglas}
+% Faz a chamada para o arquivo |.bib| que contém as definições de siglas. Essa macro só é definida se a opção |siglas| estiver habilitada, e leva o parâmetro obrigatório \marg{caminho}, que dá o caminho para o arquivo |.bib|.
+%
+%\DescribeMacro{\listofsiglas*}
+% Gera a lista de siglas. O nome da macro foi deixado parcialmente em inglês para ficar de acordo com o padrão de macros de listas como |\listoffigures| ou |\listoftables|, e ela não tem versão sem asterisco. Este comando só é definido se a opção |siglas| estiver habilitada. Caso contrário, a lista de siglas deve ser construída manualmente com o ambiente |siglas|, descrito no manual da classe |abntex2|.
+%
+%\DescribeMacro{\incluirsimbolos}
+% Faz a chamada para o arquivo |.bib| que contém as definições de símbolos. Essa macro só é definida se a opção |simbolos| estiver habilitada, e leva o parâmetro obrigatório \marg{caminho}, de maneira similar à macro |\incluirsiglas|.
+%
+%\DescribeMacro{\listofsimbolos*}
+% Gera a lista de símbolos. O nome desta macro é parte em inglês também para manter o padrão de outras macros de listas do \LaTeX, e não tem versão sem asterisco. Este comando só é definido se a opção |simbolos| estiver habilitada. Caso contrário, a lista de símbolos deve ser construída manualmente com o ambiente |simbolos|, descrito no manual da classe |abntex2|.
+%
 %\StopEventually{}
 %
 %\section{Implementação}
-%Esta seção descreve a implementação do código. É utilizada apenas como registro comentado do código produzido, e não é necessário ao usuário lê-la.
+% Esta seção descreve a implementação do código. É utilizada apenas como registro comentado do código produzido, e não é necessário ao usuário lê-la.
 %\subsection{Inicialização}
 %
 %\begin{macro}{Variáveis}
-%Declaração das variáveis: pacote |lmodern| (para uso da fonte Latin Modern) habilitado; listas automáticas do pacote |glossaries-extra| ativadas; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
+% Declaração das variáveis: pacote |lmodern| (para uso da fonte Latin Modern) habilitado; listas automáticas do pacote |glossaries-extra| ativadas; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 
@@ -111,13 +197,13 @@
 %\end{macro}
 %
 %\begin{macro}{Opções}
-%Declaração de opções do tipo par key-value, trazidas pelo pacote |kvoptions|.
+% Declaração de opções do tipo par key-value, trazidas pelo pacote |kvoptions|.
 %    \begin{macrocode}
 \RequirePackage{kvoptions}
 \DeclareStringOption[alf]{cite}
 \ProcessKeyvalOptions*
 %    \end{macrocode}
-%Declaração de outras opções, e carregamento da classe-base |abntex2|.
+% Declaração de outras opções, e carregamento da classe-base |abntex2|.
 %    \begin{macrocode}
 \DeclareOption{lmodern}{%
 	\setboolean{lmodernAtivo}{true}%
@@ -133,6 +219,9 @@
 	\setboolean{simbolosAtivo}{true}%
 }
 
+%    \end{macrocode}
+% Para a classe |abntex2| são passadas as configurações |openright|, para que o documento seja folheado da direita para a esquerda; |a4paper|, para impressão em folha A4; |chapter=TITLE| e |section=TITLE|, para que os títulos de |chapter| e |section| sejam passados para letra maiúscula, como pede o padrão da UCS.
+%    \begin{macrocode}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
 \ProcessOptions\relax
 \LoadClass[openright,a4paper,chapter=TITLE,section=TITLE]{abntex2}%
@@ -141,16 +230,17 @@
 %\end{macro}
 %
 %\begin{macro}{Pacotes}
-%Inclusão e configuração de pacotes.\\
-%Se o documento está sendo compilado com LuaLaTeX, altera-se a fonte do modo matemático para ser igual à fonte do texto, e não ser em itálico.
+% Inclusão e configuração de pacotes.\\
+% Se o documento está sendo compilado com LuaLaTeX, altera-se a fonte do modo matemático para ser igual à fonte do texto, e não ser em itálico.
 %    \begin{macrocode}
 \RequirePackage{ifluatex}
 \ifluatex
 	\usepackage[math-style=upright]{unicode-math}
+	\setboolean{lmodernAtivo}{true}
 \fi
 
 %    \end{macrocode}
-%Referências a bibliografia no padrão ABNT. Opções: substituir listas com mais de dois autores por "et al." e escrever o "et al." em itálico.\\
+% Referências a bibliografia no padrão ABNT. Opções: substituir listas com mais de dois autores por "et al." e escrever o "et al." em itálico.\\
 %Se estiver configurada citação numérica, configura para que as citações sejam feitas entre colchetes e permite as citações múltiplas como [8-11], por exemplo.
 %    \begin{macrocode}
 \RequirePackage[\ucsmono@cite,abnt-etal-list=3,abnt-etal-text=it,abnt-full-initials=no]{abntex2cite}
@@ -161,14 +251,14 @@
 }{}
 
 %    \end{macrocode}
-%Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries
+% Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries
 %    \begin{macrocode}
 \let\su@ExpandTwoArgs\relax 
 \let\IfSubStringInString\relax 
 \let\su@IfSubStringInString\relax
 
 %    \end{macrocode}
-%Chamada de outros pacotes
+% Chamada de outros pacotes
 %    \begin{macrocode}
 \ifthenelse{\boolean{lmodernAtivo}}{%
 	\RequirePackage{lmodern}% ^^A Habilita a fonte Latin Modern
@@ -200,7 +290,7 @@
 \RequirePackage{suffix}
 
 %    \end{macrocode}
-%Carregamento e configuração condicional do pacote |glossaries-extra| de acordo com o uso de qualquer uma das opções |simbolos| ou |siglas|. Configura, para esse pacote, um novo estilo de abreviação para siglas em outros idiomas, além de definir a largura da linha de descrição na lista a exibir
+% Carregamento e configuração condicional do pacote |glossaries-extra| de acordo com o uso de qualquer uma das opções |simbolos| ou |siglas|. Configura, para esse pacote, um novo estilo de abreviação para siglas em outros idiomas, além de definir a largura da linha de descrição na lista a exibir
 %    \begin{macrocode}
 \ifthenelse{\boolean{siglasAtivo}}{%
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
@@ -223,20 +313,20 @@
 %\end{macro}
 %
 %\subsection{Lista de quadros}
-%Mostra a implementação da lista de quadros, que é um elemento obrigatório em monografias da UCS, mas não é implementado na classe |abntex2|.
+% Mostra a implementação da lista de quadros, que é um elemento obrigatório em monografias da UCS, mas não é implementado na classe |abntex2|.
 %\begin{macro}{Quadros}
-%Macros para os nomes e criação do novo float |quadro|.
+% Macros para os nomes e criação do novo float |quadro|.
 %    \begin{macrocode}
 \newcommand{\quadroname}{Quadro}
 \newcommand{\listquadroname}{Lista de quadros}
 
 \newfloat{quadro}{\quadroname}{loq}[chapter]
 %    \end{macrocode}
-%Redefine o estilo e configura que não é o package float o responsável pela sua formatação.
+% Redefine o estilo e configura que não é o package float o responsável pela sua formatação.
 %    \begin{macrocode}
 \restylefloat*{quadro}
 %    \end{macrocode}
-%Ajuste do posicionamento do quadro e atribuição do arquivo de extensão .LOQ.
+% Ajuste do posicionamento do quadro e atribuição do arquivo de extensão .LOQ.
 %    \begin{macrocode}
 \setfloatadjustment{quadro}{\centering}
 \setfloatlocations{quadro}{hbtp}
@@ -244,7 +334,7 @@
 \newlistof{listofquadros}{loq}{\listquadroname}
 \newlistentry{quadro}{loq}{0}
 %    \end{macrocode}
-%Configurações de exibição e numeração nas listas e no corpo do trabalho.
+% Configurações de exibição e numeração nas listas e no corpo do trabalho.
 %    \begin{macrocode}
 \renewcommand{\cftquadroname}{\quadroname\space}
 \renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill}
@@ -257,10 +347,10 @@
 %\end{macro}
 %
 %\subsection{Modificações sobre a classe abnTeX2}
-%Aqui, as alterações de medidas e redefinições de comandos oferecidos pela classe |abntex2| são exibidos. Essas mudanças foram realizadas para adequar os padrões dessa classe à especificação da UCS.
+% Aqui, as alterações de medidas e redefinições de comandos oferecidos pela classe |abntex2| são exibidos. Essas mudanças foram realizadas para adequar os padrões dessa classe à especificação da UCS.
 %
 %\begin{macro}{Configurações}
-%Redefinição de medidas e comandos que não são utilizados pelo usuário como, por exemplo, comandos internos que definem a fonte utilizada.\\
+% Redefinição de medidas e comandos que não são utilizados pelo usuário como, por exemplo, comandos internos que definem a fonte utilizada.\\
 %Redefinição do estilo abntheadings, que coloca no cabeçalho das páginas o nome do capítulo/seção e uma linha horizontal, além do número de página. O padrão da UCS pede somente o número de página.
 %    \begin{macrocode}
 \makepagestyle{abntheadings}
@@ -268,7 +358,7 @@
 \makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
 
 %    \end{macrocode}
-%Nomes de elementos pré-textuais que precisam ser alterados
+% Nomes de elementos pré-textuais que precisam ser alterados
 %    \begin{macrocode}
 \addto\captionsbrazil{%
 	\renewcommand{\listfigurename}{Lista de figuras}%
@@ -276,7 +366,7 @@
 }
 
 %    \end{macrocode}
-%Redefinição de fontes e tamanhos para os capítulos e seções, para o corpo do documento.
+% Redefinição de fontes e tamanhos para os capítulos e seções, para o corpo do documento.
 %    \begin{macrocode}
 \renewcommand{\ABNTEXchapterfont}{\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
@@ -294,7 +384,7 @@
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
 %    \end{macrocode}
-%Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO. Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
+% Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO. Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
 %    \begin{macrocode}
 \renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
 \renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
@@ -306,7 +396,7 @@
 %\end{macro}
 %
 %\begin{macro}{\imprimircapa}
-%O comando que gera a capa precisou ser completamente reescrito para atender ao padrão requisitado pela UCS.
+% O comando que gera a capa precisou ser completamente reescrito para atender ao padrão requisitado pela UCS.
 %    \begin{macrocode}
 \renewcommand{\imprimircapa}{%
 	\pdfbookmark[0]{Capa}{Capa}%
@@ -315,10 +405,10 @@
 		\expandafter\uppercase\expandafter{\imprimirinstituicao}%
 		\vfill
 %    \end{macrocode}
-%Nome em uma caixa de texto, posicionada da seguinte maneira:\\
-%largura: largura A4 - margens = 210-30-20 = 160mm\\
-%posição horizontal: começo da margem esquerda = 30mm\\
-%posição vertical: altura A4/4 + margem superior / 2 = 294mm/4 + 15mm\\
+% Nome em uma caixa de texto, posicionada da seguinte maneira:\\
+% largura: largura A4 - margens = 210-30-20 = 160mm\\
+% posição horizontal: começo da margem esquerda = 30mm\\
+% posição vertical: altura A4/4 + margem superior / 2 = 294mm/4 + 15mm\\
 %    \begin{macrocode}
 		\begin{textblock*}{160mm}(30mm, 297mm/4+15mm)%
 			\expandafter\uppercase\expandafter{\theauthor}%
@@ -339,7 +429,7 @@
 %\end{macro}
 %
 %\begin{macro}{\folhaderostocontent}
-%Da mesma forma, a macro interna da classe |abntex2| que gera o conteúdo da folha de rosto precisou ser redefinida para ficar semelhante à capa, também remodelada.
+% Da mesma forma, a macro interna da classe |abntex2| que gera o conteúdo da folha de rosto precisou ser redefinida para ficar semelhante à capa, também remodelada.
 %    \begin{macrocode}
 \renewcommand{\folhaderostocontent}{%
 	\centering%
@@ -347,7 +437,7 @@
 	\vfill
 	\vfill
 %    \end{macrocode}
-%Título em uma caixa de texto, posicionada no centro vertical da folha (297mm/2)
+% Título em uma caixa de texto, posicionada no centro vertical da folha (297mm/2)
 %    \begin{macrocode}
 	\begin{textblock*}{160mm}(30mm, 297mm/2)%
 		\expandafter\uppercase\expandafter{\thetitle}%
@@ -373,10 +463,10 @@
 %\end{macro}
 %
 %\subsection{Outras redefinições}
-%Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
+% Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
 %
 %\begin{macro}{\glsxtruserparen}
-%Essa macro, trazida pelo pacote |glossaries-extra| define o conteúdo entre parênteses quando a key |user1| estiver preenchida. Essa redefinição só acontece se a geração de lista de siglas estiver ativa.
+% Essa macro, trazida pelo pacote |glossaries-extra| define o conteúdo entre parênteses quando a key |user1| estiver preenchida. Essa redefinição só acontece se a geração de lista de siglas estiver ativa.
 %    \begin{macrocode}
 \ifthenelse{\boolean{siglasAtivo}}{%
 	\renewcommand{\glsxtruserparen}[2]{%
@@ -386,7 +476,7 @@
 	}%
 %    \end{macrocode}
 %\begin{macro}{\glsuserdescription}
-%Define o texto longo (descrição) que será exibido na lista de siglas
+% Define o texto longo (descrição) que será exibido na lista de siglas
 %    \begin{macrocode}
 	\renewcommand{\glsuserdescription}[2]{%
 		\ifglshasfield{\glsxtruserfield}{#2}{\emph{\glscurrentfieldvalue}}{#1}%
@@ -398,7 +488,7 @@
 %\end{macro}
 %
 %\begin{macro}{\contentsline}
-%Macro responsável por definir o conteúdo da linha no sumário, é redefinida para que os nomes das seções no sumário sejam escritos em letra maiúscula.
+% Macro responsável por definir o conteúdo da linha no sumário, é redefinida para que os nomes das seções no sumário sejam escritos em letra maiúscula.
 %    \begin{macrocode}
 \let\@contentslineaux\contentsline
 \def\contentsline#1#2{%
@@ -418,7 +508,7 @@
 %\end{macro}
 %
 %\begin{macro}{\foreignlanguage}
-%Extensão da macro que inicia um texto em língua estrangeira, alterando-a para que o conteúdo seja destacado em itálico.
+% Extensão da macro que inicia um texto em língua estrangeira, alterando-a para que o conteúdo seja destacado em itálico.
 %    \begin{macrocode}
 \let\@foreignlanguageaux\foreignlanguage 
 \renewcommand{\foreignlanguage}[2]{\@foreignlanguageaux{#1}{\emph{#2}}}
@@ -426,10 +516,10 @@
 %\end{macro}
 %
 %\subsection{Comandos específicos desta classe}
-%No final do código são definidos os comandos produzidos pela classe |ucsmono| propriamente dita.
+% No final do código são definidos os comandos produzidos pela classe |ucsmono| propriamente dita.
 %
 %\begin{macro}{\imprimirfolhadeaprovacao}
-%Imprime a folha de aprovação.
+% Imprime a folha de aprovação.
 %    \begin{macrocode}
 \newcommand{\imprimirfolhadeaprovacao}[5][Universidade de Caxias do Sul - UCS]{%
 	\begin{folhadeaprovacao}%
@@ -490,7 +580,7 @@
 %\end{macro}
 %
 %\begin{macro}{\incluirimagem}
-%Inserção de uma figura com descrição e fonte.
+% Inserção de uma figura com descrição e fonte.
 %    \begin{macrocode}
 \newcommand{\incluirimagem}[4][1]{%
 	\caption{#3}%
@@ -505,7 +595,7 @@
 %\end{macro}
 %
 %\begin{macro}{\incluirsiglas}
-%Inclusão do arquivo para a lista de siglas. A macro só é definida se a opção |siglas| tiver sido habilitada.
+% Inclusão do arquivo para a lista de siglas. A macro só é definida se a opção |siglas| tiver sido habilitada.
 %    \begin{macrocode}
 \ifthenelse{\boolean{siglasAtivo}}{%
 	\newcommand{\incluirsiglas}[1]{%
@@ -523,10 +613,9 @@
 	}%
 %    \end{macrocode}
 %\begin{macro}{\listofsiglas*}
-%Exibição da lista de siglas. Também só é definida com a opção |siglas| habilitada.\\
-%Por algum motivo, o comando |\printunsrtglossary| incrementa o contador table em uma
-%unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.\\
-%O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
+% Exibição da lista de siglas. Também só é definida com a opção |siglas| habilitada.\\
+% Por algum motivo, o comando |\printunsrtglossary| incrementa o contador table em uma unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.\\
+% O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
 %    \begin{macrocode}
 	\WithSuffix\newcommand\listofsiglas*{%
 		\printunsrtglossary[type=acronym,title=\listadesiglasname]%
@@ -539,7 +628,7 @@
 %\end{macro}
 %
 %\begin{macro}{\incluirsimbolos}
-%Inclusão do arquivo para a lista de símbolos. A macro só é definida se a opção |simbolos| tiver sido habilitada.
+% Inclusão do arquivo para a lista de símbolos. A macro só é definida se a opção |simbolos| tiver sido habilitada.
 %    \begin{macrocode}
 \ifthenelse{\boolean{simbolosAtivo}}{%
 	\newcommand{\incluirsimbolos}[1]{%
@@ -551,10 +640,9 @@
 	}%
 %    \end{macrocode}
 %\begin{macro}{\listofsimbolos*}
-%Exibição da lista de símbolos. Também só é definida com a opção |simbolos| habilitada.\\
-%Por algum motivo, o comando |\printunsrtglossary| incrementa o contador table em uma
-%unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.\\
-%O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
+% Exibição da lista de símbolos. Também só é definida com a opção |simbolos| habilitada.\\
+% Por algum motivo, o comando |\printunsrtglossary| incrementa o contador table em uma unidade. Por isso foi preciso utilizar a instrução para decrementá-lo logo em seguida.\\
+% O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
 %    \begin{macrocode}
 	\WithSuffix\newcommand\listofsimbolos*{%
 		\printunsrtglossary[type=symbols,title=\listadesimbolosname]%
@@ -566,3 +654,5 @@
 %\end{macro}
 %
 %\Finale
+%\PrintChanges
+%\PrintIndex
