@@ -13,13 +13,19 @@ The **ucsmono.tds** folder contains the subfolders **doc**, **source** and **tex
 
 ### Installing from INS and DTX files
 You may run `latex` on the INS file to make it generate the class (.cls) file:
+
     latex ucsmono.ins
+    
 and you can run ´pdflatex´ on the DTX file to generate the class documentation:
+
     pdflatex ucsmono.dtx
 
 The generated .CLS file shall be copied to
+
     TEXMF/tex/latex/ucsmono
+    
 and the .PDF documentation file shall be copied to
+
     TEXMF/doc/latex/ucsmono
 
 ## Change log
