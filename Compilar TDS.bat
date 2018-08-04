@@ -11,3 +11,5 @@ xcopy ucsmono.pdf ucsmono.tds\doc\latex\ucsmono /K /I /Y
 xcopy ucsmono.dtx ucsmono.tds\source\latex\ucsmono /K /I /Y
 xcopy ucsmono.ins ucsmono.tds\source\latex\ucsmono /K /I /Y
 "C:\Program Files\7-Zip\7z" a ucsmono.tds.zip .\ucsmono.tds\*
+rmdir .\ucsmono.tds /Q /S
+git clean -x -f -e *.zip -e *.cls
