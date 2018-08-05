@@ -29,5 +29,5 @@ and the .PDF documentation file shall be copied to
     TEXMF/doc/latex/ucsmono
 
 ## Change log
-v1.0 (2018-08-04):
+v1.0 (2018-08-04, Henrique Baron):
 * Initial version
