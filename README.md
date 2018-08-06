@@ -1,4 +1,4 @@
-﻿# ucsmonograph
+# ucsmonograph
 LaTeX class made for typesetting academic documents according to the ABNT (Brazillian Technical Standards Association) standards, adjusted to the requirements of the UCS (University of Caxias do Sul).
 
 The author of this document is Henrique Baron.
