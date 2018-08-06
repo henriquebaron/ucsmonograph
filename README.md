@@ -50,5 +50,5 @@ and the .PDF documentation file shall be copied to
     TEXMF/doc/latex/ucsmonograph
 
 ## Change log
-v1.0 (2018-08-04, Henrique Baron):
+v1.0.0 (2018-08-04, Henrique Baron):
 * Initial version
