@@ -14,10 +14,10 @@
 % 
 % The Current Maintainer of this work is Henrique Baron.
 %
-% This work consists of the files ucsmonography.dtx and ucsmonography.ins
-% and the derived file ucsmonography.cls.
+% This work consists of the files ucsmonograph.dtx and ucsmonograph.ins
+% and the derived file ucsmonograph.cls.
 %
-% Classe ucsmonography
+% Classe ucsmonograph
 % Formata um documento da classe abnTeX2 para o padrão exigido pela Universidade de Caxias do Sul para
 % monografias.
 % 
@@ -28,10 +28,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{ucsmonography.dtx}
+\ProvidesFile{ucsmonograph.dtx}
 %</driver>
 %<class>\NeedsTeXFormat{LaTeX2e}
-%<class>\ProvidesClass{ucsmonography}
+%<class>\ProvidesClass{ucsmonograph}
 %<*class>
 	[2018/07/31 v1.0 Padrao de monografias da UCS]
 %</class>
@@ -46,7 +46,7 @@
 \CodelineIndex
 \RecordChanges
 \begin{document}
-	\DocInput{ucsmonography.dtx}
+	\DocInput{ucsmonograph.dtx}
 \end{document}
 %</driver>
 %\fi
@@ -71,11 +71,11 @@
 %
 %\changes{v1.0}{2018/07/31}{Versão inicial}
 %
-%\GetFileInfo{ucsmonography.dtx}
+%\GetFileInfo{ucsmonograph.dtx}
 %
 %\DoNotIndex{\newcommand, \newenvironment}
 %
-%\title{Classe \textsf{ucsmonography}\thanks{Esse documento corresponde a \textsf(ucsmonography)~\fileversion, de \filedate.}}
+%\title{Classe \textsf{ucsmonograph}\thanks{Esse documento corresponde a \textsf(ucsmonograph)~\fileversion, de \filedate.}}
 %\author{Henrique Baron \\ \texttt{henrique.baron@gmail.com}}
 %
 %\maketitle
@@ -83,21 +83,21 @@
 %\section{Introdução}
 % Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul. Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia no assunto, abstraindo algumas configurações de formatação e comandos mais complexos.
 %
-% A classe |ucsmonography| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT. O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
+% A classe |ucsmonograph| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT. O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
 %
 %\subsection{Se seu documento possui fórmulas}
 % Pode ser necessário compilar o trabalho com Lua\LaTeX. Mesmo para iniciantes no \LaTeX, essa não é uma mudança complicada, e pode ser necessária para atender uma exigência da UCS. Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente. Isso serve para deixar o documento de fato mais legível e mais ''bonito'', e é possível negociar com os responsáveis se existe margem para manter essa diferença de fontes entre texto e equações.
 %
-% Caso não seja permitido, é o ponto onde o Lua\LaTeX~entra. No pdf\LaTeX~não é possível alterar a fonte do texto matemático. Por conta disso, a classe |ucsmonography| é preparada para carregar conjuntos de caracteres e a fonte Latin Modern automaticamente se o documento estiver sendo compilado com o Lua\LaTeX. 
+% Caso não seja permitido, é o ponto onde o Lua\LaTeX~entra. No pdf\LaTeX~não é possível alterar a fonte do texto matemático. Por conta disso, a classe |ucsmonograph| é preparada para carregar conjuntos de caracteres e a fonte Latin Modern automaticamente se o documento estiver sendo compilado com o Lua\LaTeX. 
 %
 %\section{Utilização}
-% Para utilizar a classe |ucsmonography|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas. Este manual descreve apenas os comandos desenvolvidos na própria classe |ucsmonography| e outras redefinições de comandos que podem ser pertinentes ao usuário.
+% Para utilizar a classe |ucsmonograph|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas. Este manual descreve apenas os comandos desenvolvidos na própria classe |ucsmonograph| e outras redefinições de comandos que podem ser pertinentes ao usuário.
 %
 %\subsection{Chamada da classe e opções}
 %\DescribeMacro{\documentclass}
 % A classe pode ser chamada com as opções-padrão que são nativas do \LaTeX~e são encaminhadas para a classe |abntex2|. Um exemplo típico para chamar a classe ao iniciar o documento pode ser
 %\begin{verbatim}
-%	\documentclass[12pt,oneside,english,brazil]{ucsmonography}
+%	\documentclass[12pt,oneside,english,brazil]{ucsmonograph}
 %\end{verbatim}
 %Outras opções que podem ser alteradas ou acrescentadas a essa chamada são exibidas abaixo.
 %
@@ -124,7 +124,7 @@
 % Também para o caso dos editores online, a lista de símbolos pode ser feita manualmente no ambiente |simbolos|, documentado no manual da classe |abntex2|.
 %
 %\subsection{Quadros e lista de quadros}
-% Por padrão, o \LaTeX~já oferece meios de criar tabelas e a lista de tabelas. Para o caso dos quadros, que são um elemento obrigatório pelo Guia da UCS, não há nenhum recurso desenvolvido, nem na classe |abntex2|. Para isso, o ambiente |quadro| foi criado na classe |ucsmonography|.
+% Por padrão, o \LaTeX~já oferece meios de criar tabelas e a lista de tabelas. Para o caso dos quadros, que são um elemento obrigatório pelo Guia da UCS, não há nenhum recurso desenvolvido, nem na classe |abntex2|. Para isso, o ambiente |quadro| foi criado na classe |ucsmonograph|.
 %
 %\DescribeEnv{quadro}
 % É um ambiente flutuante semelhante a |figure| ou |table|. Dentro dele pode ser inserida a imagem de um quadro diretamente, com a macro |\incluirimagem|, ou pode ser criado manualmente o quadro com o ambiente |tabular| e utilizando a macro |caption| para definir uma legenda.
@@ -136,13 +136,13 @@
 % Gera a lista de quadros, sem colocar essa entrada no sumário.
 %
 %\subsection{Outras redefinições}
-% Macros fornecidas por outros pacotes ou classes e que foram alteradas na classe |ucsmonography| são descritas aqui.
+% Macros fornecidas por outros pacotes ou classes e que foram alteradas na classe |ucsmonograph| são descritas aqui.
 %
 %\DescribeMacro{\foreignlanguage}
 % Foi alterada para colocar em itálico o texto em idioma estrangeiro. Como essa macro considera o padrão de hifenização da linguagem definida no parâmetro obrigatório \marg{language}, é recomendado utilizá-la sempre que se desejar digitar conteúdo em um idioma diferente do padrão do documento.
 %
 %\subsection{Comandos específicos}
-% A classe |ucsmonography| define alguns comandos próprios, que são detalhados aqui.
+% A classe |ucsmonograph| define alguns comandos próprios, que são detalhados aqui.
 %
 %\DescribeMacro{\imprimirfolhadeaprovacao}
 % Gera a folha de aprovação no padrão solicitado pela UCS, e recebe até cinco argumentos:
@@ -243,9 +243,9 @@
 % Referências a bibliografia no padrão ABNT. Opções: substituir listas com mais de dois autores por "et al." e escrever o "et al." em itálico.\\
 %Se estiver configurada citação numérica, configura para que as citações sejam feitas entre colchetes e permite as citações múltiplas como [8-11], por exemplo.
 %    \begin{macrocode}
-\RequirePackage[\ucsmonography@cite,abnt-etal-list=3,abnt-etal-text=it,abnt-full-initials=no]{abntex2cite}
+\RequirePackage[\ucsmonograph@cite,abnt-etal-list=3,abnt-etal-text=it,abnt-full-initials=no]{abntex2cite}
 
-\ifthenelse{\equal{\ucsmonography@cite}{num}}{%
+\ifthenelse{\equal{\ucsmonograph@cite}{num}}{%
 	\citebrackets[]%
 	\RequirePackage{cite}%
 }{}
@@ -516,7 +516,7 @@
 %\end{macro}
 %
 %\subsection{Comandos específicos desta classe}
-% No final do código são definidos os comandos produzidos pela classe |ucsmonography| propriamente dita.
+% No final do código são definidos os comandos produzidos pela classe |ucsmonograph| propriamente dita.
 %
 %\begin{macro}{\imprimirfolhadeaprovacao}
 % Imprime a folha de aprovação.
