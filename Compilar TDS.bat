@@ -11,4 +11,4 @@ xcopy %class%.ins %class% /K /I /Y
 xcopy %class%.pdf %class% /K /I /Y
 "C:\Program Files\7-Zip\7z" a %class%.zip .\%class%\
 rmdir .\%class% /Q /S
-git clean -x -f -e *.zip -e *.cls
+git clean -x -f -e *.zip -e *.cls -e *.pdf
