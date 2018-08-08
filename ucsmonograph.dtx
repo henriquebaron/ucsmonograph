@@ -51,7 +51,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{416}
+% \CheckSum{419}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -383,6 +383,10 @@
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\ABNTEXsubsubsectionfont\itshape}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
+%    \end{macrocode}
+% Alteração do espaçamento entre o título do capítulo e o corpo do texto.
+%    \begin{macrocode}
+\AtBeginDocument{\setlength{\afterchapskip}{20pt}}
 %    \end{macrocode}
 % Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO. Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
 %    \begin{macrocode}
