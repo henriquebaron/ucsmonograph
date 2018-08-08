@@ -1,3 +1,4 @@
 *.dtx	text eol=lf
 *.ins	text eol=lf
+*.tex	text eol=lf
 *.md	text eol=lf

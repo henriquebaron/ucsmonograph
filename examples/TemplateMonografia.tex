@@ -1,0 +1,122 @@
+\documentclass[12pt,oneside,english,brazil,lmodern]{ucsmonograph}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+
+\titulo{Meu trabalho de conclusão de curso}
+\autor{Pedro Silva}
+\data{2018}
+\instituicao{Universidade de Caxias do Sul}
+\local{Caxias do Sul}
+\preambulo{Trabalho de conclusão de curso apresentado à Universidade de Caxias do Sul como requisito parcial à obtenção de grau de Engenheiro Mecânico. Área de concentração: Projetos de Máquinas: Estática e Dinâmica Aplicada.}
+\orientador{Dr. Orientador do Meu Trabalho}
+
+% Configuração do pacote hyperref, segundo manual do abnTeX2: não remover
+\makeatletter
+\hypersetup{%
+	unicode=true,
+	pdftitle={\@title},
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfkeywords={Minhas. Palavras. Chave}
+	pdfcreator={LaTeX with ucsmonograph},
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+}
+\makeatother
+
+\begin{document}
+	\setlength{\afterchapskip}{20pt}
+	\imprimircapa
+	\imprimirfolhaderosto
+	
+	\imprimirfolhadeaprovacao[Empresa ABC Ltda.]{10/12/2018}{Dr. Avaliador Banca 1}{Me. Avaliador Banca 2}{Eng. Avaliador Externo}
+	
+	\begin{dedicatoria}
+		\vspace*{\fill}
+		\hspace{.45\textwidth}
+		\begin{minipage}[b]{.5\textwidth}
+			\SingleSpacing%
+			Dedico este trabalho à minha mãe, meu pai e meu cachorro\dots
+		\end{minipage}
+	\end{dedicatoria}
+
+	\begin{resumo}
+		\SingleSpacing
+		Este é o resumo do trabalho.
+		\vspace{\onelineskip}
+		
+		\noindent
+		\textbf{Palavras-chave}: Palavras. Chave. Deste. Trabalho.
+	\end{resumo}
+	
+	\begin{resumo}[ABSTRACT]
+		\SingleSpacing
+		This is the abstract of this work.
+		\vspace{\onelineskip}
+		
+		\noindent
+		\textbf{Keywords}: Keywords. Of. This. Work.
+	\end{resumo}
+	
+	\pdfbookmark[0]{\listfigurename}{lof}
+	\listoffigures*
+	\cleardoublepage
+		
+	\pdfbookmark[0]{\listquadroname}{loq}
+	\listofquadros*
+	\cleardoublepage
+	
+	\pdfbookmark[0]{\listtablename}{lot}
+	\listoftables*
+	\cleardoublepage
+	
+	\pdfbookmark[0]{\listadesiglasname}{loa}
+	\begin{siglas} % Não esquecer de ordenar alfabeticamente!
+		\item[ABNT] Associação Brasileira de Normas Técnicas
+		\item[UCS] Universidade de Caxias do Sul
+		\item[XML] \foreignlanguage{english}{Extensible Markup Language}
+	\end{siglas}
+
+	\pdfbookmark[0]{\listadesimbolosname}{los}
+	\begin{simbolos}
+		\item[\ensuremath{\alpha}] Ângulo qualquer [rad]
+		\item[\ensuremath{\tau}] Período [s]
+		\item[\ensuremath{\omega}] Velocidade angular [rad/s]
+		\item[\ensuremath{t}] Tempo [s]
+	\end{simbolos}
+
+	\pdfbookmark[0]{\contentsname}{toc}
+	\tableofcontents*
+	
+	\textual % Início dos elementos textuais
+	
+	\chapter{Introdução}
+	Introdução do trabalho
+	
+	\section{Justificativa}
+	Justifique a proposta.
+	
+	\section{Ambiente de desenvolvimento}
+	Este trabalho foi desenvolvido na empresa A.
+	
+	\section{Objetivos}
+	Aqui ficam os objetivos do trabalho.
+	
+	\subsection{Objetivos gerais}
+	Objetivos gerais\dots
+	
+	\subsection{Objetivos específicos}
+	Objetivos específicos\dots
+	
+	\chapter{Referencial teórico}
+	Aqui ficam os fundamentos teóricos do trabalho proposto.
+	
+	\section{Método de Rayleigh-Litz}
+	O método de Rayleigh-Litz
+	
+\end{document}
