@@ -20,6 +20,9 @@
 *.lot
 *.synctex(busy)
 
+# Makelatex generated files
+*.fdb_latexmk
+
 # Makeindex and Makeglossaries generated files
 *.ilg
 *.glg
