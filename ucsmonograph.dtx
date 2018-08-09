@@ -177,21 +177,18 @@
 %\subsection{Inicialização}
 %
 %\begin{macro}{Variáveis}
-% Declaração das variáveis: pacote |lmodern| (para uso da fonte Latin Modern) habilitado; listas automáticas do pacote |glossaries-extra| ativadas; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
+% Declaração das variáveis: pacote |lmodern| (para uso da fonte Latin Modern) habilitado; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 
-\newboolean{lmodernAtivo}
-\setboolean{lmodernAtivo}{false}
+\newboolean{@lmodernAtivo}
+\setboolean{@lmodernAtivo}{false}
 
-\newboolean{listasAtivo}
-\setboolean{listasAtivo}{false}
+\newboolean{@siglasAtivo}
+\setboolean{@siglasAtivo}{false}
 
-\newboolean{siglasAtivo}
-\setboolean{siglasAtivo}{false}
-
-\newboolean{simbolosAtivo}
-\setboolean{simbolosAtivo}{false}
+\newboolean{@simbolosAtivo}
+\setboolean{@simbolosAtivo}{false}
 
 %    \end{macrocode}
 %\end{macro}
@@ -206,17 +203,15 @@
 % Declaração de outras opções, e carregamento da classe-base |abntex2|.
 %    \begin{macrocode}
 \DeclareOption{lmodern}{%
-	\setboolean{lmodernAtivo}{true}%
+	\setboolean{@lmodernAtivo}{true}%
 }
 
 \DeclareOption{siglas}{%
-	\setboolean{listasAtivo}{true}%
-	\setboolean{siglasAtivo}{true}%
+	\setboolean{@siglasAtivo}{true}%
 }
 
 \DeclareOption{simbolos}{%
-	\setboolean{listasAtivo}{true}%
-	\setboolean{simbolosAtivo}{true}%
+	\setboolean{@simbolosAtivo}{true}%
 }
 
 %    \end{macrocode}
@@ -236,7 +231,7 @@
 \RequirePackage{ifluatex}
 \ifluatex
 	\usepackage[math-style=upright]{unicode-math}
-	\setboolean{lmodernAtivo}{true}
+	\setboolean{@lmodernAtivo}{true}
 \fi
 
 %    \end{macrocode}
@@ -260,7 +255,7 @@
 %    \end{macrocode}
 % Chamada de outros pacotes
 %    \begin{macrocode}
-\ifthenelse{\boolean{lmodernAtivo}}{%
+\ifthenelse{\boolean{@lmodernAtivo}}{%
 	\RequirePackage{lmodern}% ^^A Habilita a fonte Latin Modern
 }{}
 
@@ -291,22 +286,29 @@
 
 %    \end{macrocode}
 % Carregamento e configuração condicional do pacote |glossaries-extra| de acordo com o uso de qualquer uma das opções |simbolos| ou |siglas|. Configura, para esse pacote, um novo estilo de abreviação para siglas em outros idiomas, além de definir a largura da linha de descrição na lista a exibir
+% Passagem das opções para o pacote |glossaries-extra| em função das opções |siglas| ou |simbolos|.
 %    \begin{macrocode}
-\ifthenelse{\boolean{siglasAtivo}}{%
+\ifthenelse{\boolean{@siglasAtivo}}{%
 	\PassOptionsToPackage{acronyms}{glossaries-extra}%
 }
 
-\ifthenelse{\boolean{simbolosAtivo}}{%
+\ifthenelse{\boolean{@simbolosAtivo}}{%
 	\PassOptionsToPackage{symbols}{glossaries-extra}%
 }
 
-\PassOptionsToPackage{record,toc=false,nonumberlist,style=long,acronyms,symbols}{glossaries-extra}
+\ifthenelse{\boolean{@siglasAtivo} \OR \boolean{@simbolosAtivo}}{%
+	\PassOptionsToPackage{record,toc=false,nonumberlist,style=long}{glossaries-extra}%
+}{}
 
-\ifthenelse{\boolean{listasAtivo}}{%
-	\RequirePackage{glossaries-extra}%
+\RequirePackage{glossaries-extra}
+\setlength\glsdescwidth\linewidth%
+
+%    \end{macrocode}
+% Configura no pacote |glossaries-extra| um novo estilo de abreviação para siglas em outros idiomas.
+%    \begin{macrocode}
+\ifthenelse{\boolean{@siglasAtivo}}{%
 	\setabbreviationstyle[acronym]{long-short}%
 	\setabbreviationstyle[foreignabbreviation]{long-short-user}%
-	\setlength{\glsdescwidth}{\linewidth}%
 }{}
 
 %    \end{macrocode}
@@ -472,7 +474,7 @@
 %\begin{macro}{\glsxtruserparen}
 % Essa macro, trazida pelo pacote |glossaries-extra| define o conteúdo entre parênteses quando a key |user1| estiver preenchida. Essa redefinição só acontece se a geração de lista de siglas estiver ativa.
 %    \begin{macrocode}
-\ifthenelse{\boolean{siglasAtivo}}{%
+\ifthenelse{\boolean{@siglasAtivo}}{%
 	\renewcommand{\glsxtruserparen}[2]{%
 		\glsxtrfullsep{#2}%
 		\glsxtrparen
@@ -601,7 +603,7 @@
 %\begin{macro}{\incluirsiglas}
 % Inclusão do arquivo para a lista de siglas. A macro só é definida se a opção |siglas| tiver sido habilitada.
 %    \begin{macrocode}
-\ifthenelse{\boolean{siglasAtivo}}{%
+\ifthenelse{\boolean{@siglasAtivo}}{%
 	\newcommand{\incluirsiglas}[1]{%
 	\GlsXtrLoadResources[%
 		src  = {#1},
@@ -634,7 +636,7 @@
 %\begin{macro}{\incluirsimbolos}
 % Inclusão do arquivo para a lista de símbolos. A macro só é definida se a opção |simbolos| tiver sido habilitada.
 %    \begin{macrocode}
-\ifthenelse{\boolean{simbolosAtivo}}{%
+\ifthenelse{\boolean{@simbolosAtivo}}{%
 	\newcommand{\incluirsimbolos}[1]{%
 		\GlsXtrLoadResources[%
 		src = {#1},

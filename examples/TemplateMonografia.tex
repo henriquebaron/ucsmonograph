@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage{amsmath}
+\usepackage{glossaries-extra} % Desnecessário a partir da v1.0.1
 
 \titulo{Meu trabalho de conclusão de curso}
 \autor{Pedro Silva}
@@ -30,11 +31,11 @@
 \makeatother
 
 \begin{document}
-	\setlength{\afterchapskip}{20pt}
+	\setlength{\afterchapskip}{20pt} % Desnecessário a partir da v1.0.1
 	\imprimircapa
 	\imprimirfolhaderosto
 	
-%	\imprimirfolhadeaprovacao[Empresa ABC Ltda.]{10/12/2018}{Dr. Avaliador Banca 1}{Me. Avaliador Banca 2}{Eng. Avaliador Externo}
+	\imprimirfolhadeaprovacao[Empresa ABC Ltda.]{10/12/2018}{Dr. Avaliador Banca 1}{Me. Avaliador Banca 2}{Eng. Avaliador Externo}
 	
 	\begin{dedicatoria}
 		\vspace*{\fill}
@@ -67,9 +68,9 @@
 	\listoffigures*
 	\cleardoublepage
 		
-%	\pdfbookmark[0]{\listquadroname}{loq}
-%	\listofquadros*
-%	\cleardoublepage
+	\pdfbookmark[0]{\listquadroname}{loq}
+	\listofquadros*
+	\cleardoublepage
 	
 	\pdfbookmark[0]{\listtablename}{lot}
 	\listoftables*
@@ -117,7 +118,7 @@
 	Aqui ficam os fundamentos teóricos do trabalho proposto \cite{rao:2008}.
 	
 	\section{Método de Rayleigh-Litz}
-	O método de Rayleigh-Litz
+	O método de Rayleigh-Litz \cite{cooley:1965}.
 	
 	\postextual
 	
