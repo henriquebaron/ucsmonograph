@@ -51,7 +51,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{419}
+% \CheckSum{448}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -285,14 +285,25 @@
 }{}
 
 %    \end{macrocode}
-% Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries
+% Código necessário para evitar conflito no pacote substr pelo uso dele por ambos os pacotes abntex2cite e glossaries.
 %    \begin{macrocode}
 \let\su@ExpandTwoArgs\relax 
 \let\IfSubStringInString\relax 
 \let\su@IfSubStringInString\relax
 
 %    \end{macrocode}
-% Chamada de outros pacotes
+% Configurações gerais do pacote |hyperref|.
+%    \begin{macrocode}
+\hypersetup{%
+	unicode=true,
+	pdfcreator={LaTeX with ucsmonograph},
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+}
+
+%    \end{macrocode}
+% Chamada de outros pacotes.
 %    \begin{macrocode}
 \ifthenelse{\boolean{@lmodernAtivo}}{%
 	\RequirePackage{lmodern}% ^^A Habilita a fonte Latin Modern
@@ -510,6 +521,44 @@
 
 %    \end{macrocode}
 %\end{macro}
+%\begin{macro}{\autor}
+% Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
+%    \begin{macrocode}
+\let\@tituloaux\titulo
+\renewcommand{\titulo}[1]{%
+	\@tituloaux{#1}
+	\hypersetup{%
+		pdftitle={#1}
+	}
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\autor}
+% Extensão da macro para o autor, semelhante à macro |\titulo|.
+%    \begin{macrocode}
+\let\@autoraux\autor
+\renewcommand{\autor}[1]{%
+	\@autoraux{#1}
+	\hypersetup{%
+		pdfauthor={#1}
+	}
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\preambulo}
+% Extensão da macro para o preâmbulo (assunto), semelhante à macro |\titulo|.
+%    \begin{macrocode}
+\let\@preambuloaux\preambulo
+\renewcommand{\preambulo}[1]{%
+	\@preambuloaux{#1}
+	\hypersetup{%
+		pdfsubject={#1}
+	}
+}
+
+%    \end{macrocode}
+%\end{macro}
 %
 %\subsection{Outras redefinições}
 % Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
@@ -562,11 +611,31 @@
 %    \begin{macrocode}
 \let\@foreignlanguageaux\foreignlanguage 
 \renewcommand{\foreignlanguage}[2]{\@foreignlanguageaux{#1}{\emph{#2}}}
+
 %    \end{macrocode}
 %\end{macro}
 %
 %\subsection{Comandos específicos desta classe}
 % No final do código são definidos os comandos produzidos pela classe |ucsmonograph| propriamente dita.
+%
+%\begin{macro}{\@palavraschave}
+% É uma macro utilizada como variável, que armazena as palavras-chave definidas pelo usuário.
+%    \begin{macrocode}
+\newcommand{\@palavraschave}{}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\palavraschave}
+% Redefine o conteúdo da macro |\@palavraschave| e configura também esse conteúdo no pacote |hyperref|.
+%    \begin{macrocode}
+\newcommand{\palavraschave}[1]{%
+	\renewcommand{\@palavraschave}{#1}
+	\hypersetup{%
+		pdfkeywords={#1}
+	}
+}
+%    \end{macrocode}
+%\end{macro}
 %
 %\begin{macro}{\imprimirfolhadeaprovacao}
 % Imprime a folha de aprovação.
