@@ -156,6 +156,33 @@
 %\DescribeMacro{\listofquadros*}
 % Gera a lista de quadros, sem colocar essa entrada no sumário.
 %
+%\subsection{Redefinições da classe abn\TeX 2}
+% Alguns comandos e ambientes expostos pela classe |abntex2| foram redefinidos ou modificados na classe |ucsmonograph|, e essas alterações são apresentadas a seguir.
+%
+%\DescribeMacro{\autor}
+% A função macro |\autor|\marg{nome} foi estendida para incluir o nome do autor automaticamente nas propriedades do PDF.
+% Isso elimina a necessidade de utilizar a macro |\hypersetup| do pacote |hyperref| e alterar a chave |pdfauthor|.
+%
+% Na verdade, essa alteração, em conjunto com as modificações realizadas nas macros |\titulo|, |\preambulo|, |\orientador| e a criação da macro |\palavraschave| eliminam a necessidade de configuração do pacote |hyperref| com a macro |\hypersetup|.
+%
+%\DescribeMacro{\titulo}
+% A função da macro |\titulo|\marg{nome} foi estendida de maneira semelhante à macro |\autor|.
+%
+%\DescribeMacro{\preambulo}
+% A função da macro |\preambulo|\marg{assunto} foi estendida de maneira semelhante à macro |\autor|.
+%
+%\DescribeMacro{\orientador}
+% A função da macro |\orientador|\marg{nome} foi estendida de maneira semelhante à macro |\autor|.
+%
+%\DescribeEnv{dedicatoria}
+% O ambiente |dedicatoria| foi modificado para que não seja necessário aplicar qualquer formatação, nem escrever dentro de um ambiente |minipage|, como sugere o manual da classe |abntex2|.
+% Dessa maneira, a dedicatória pode ser escrita simplesmente como:
+%\begin{verbatim}
+% \begin{dedicatoria}
+      Dedico este trabalho a minha família etc.
+% \end{dedicatoria}
+%\end{verbatim}
+%
 %\subsection{Outras redefinições}
 % Macros fornecidas por outros pacotes ou classes e que foram alteradas na classe |ucsmonograph| são descritas aqui.
 %
@@ -526,6 +553,26 @@
 
 %    \end{macrocode}
 %\end{macro}
+%
+%\begin{environment}{dedicatoria}
+% Extensão da macro |dedicatoria| para isentar o usuário da necessidade de formatar manualmente a posição do texto.
+%    \begin{macrocode}
+\let\@olddedicatoria\dedicatoria
+\let\@oldenddedicatoria\enddedicatoria
+\def\dedicatoria{%
+	\@olddedicatoria%
+	\vspace*{\fill}%
+	\hspace{.5\textwidth}%
+	\begin{minipage}[b]{.45\textwidth}%
+	\SingleSpacing%
+}
+\def\enddedicatoria{%
+	\end{minipage}%
+	\@oldenddedicatoria%
+}
+
+%    \end{macrocode}
+%\end{environment}
 %\begin{macro}{\autor}
 % Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
 %    \begin{macrocode}
