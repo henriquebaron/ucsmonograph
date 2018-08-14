@@ -143,6 +143,27 @@
 %\pdfbookmark,%
 %\ProcessKeyvalOptions,%
 %\ProcessOptions,%
+%\raggedright,%
+%\relax,%
+%\renewcommand,%
+%\RequirePackage,%
+%\restylefloat,%
+%\rule,%
+%\setboolean,%
+%\setfloatadjustement,%
+%\setfloatlocations,%
+%\setlength,%
+%\SingleSpacing,%
+%\space,%
+%\su@ExpandTwoArgs,%
+%\su@IfSubStringInString,%
+%\textbf,%
+%\textendash,%
+%\textwidth,%
+%\uppercase,%
+%\vfill,%
+%\vspace,%
+%\WithSuffix,%
 %}
 %
 %\title{Classe \textsf{ucsmonograph}\thanks{Esse documento corresponde a \textsf(ucsmonograph)~\fileversion, de \filedate.}}
@@ -315,7 +336,7 @@
 % É utilizada apenas como registro comentado do código produzido, e não é necessário ao usuário lê-la.
 %\subsection{Inicialização}
 %
-%\begin{macro}{Variáveis}
+%\begin{macro}{Variaveis}
 % Declaração das variáveis: pacote |lmodern| (para uso da fonte Latin Modern) habilitado; criação automática da lista de siglas ativa; e criação automática da lista de símbolos ativa.
 %    \begin{macrocode}
 \RequirePackage{ifthen}
@@ -369,7 +390,7 @@
 %    \begin{macrocode}
 \RequirePackage{ifluatex}
 \ifluatex
-	\usepackage[math-style=upright]{unicode-math}
+	\RequirePackage[math-style=upright]{unicode-math}
 	\setboolean{@lmodernAtivo}{true}
 \fi
 
