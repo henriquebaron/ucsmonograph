@@ -42,6 +42,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{hyperref}
+\hypersetup{%
+	colorlinks=true,
+	linkcolor=black,
+}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -173,7 +178,7 @@
 %
 %\section{Introdução}
 % Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
-% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia no assunto, abstraindo algumas configurações de formatação e comandos mais complexos.
+% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia na linguagem, abstraindo algumas configurações de formatação e comandos mais complexos.
 %
 % A classe |ucsmonograph| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT.
 % O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
@@ -188,6 +193,17 @@
 % No pdf\LaTeX~não é possível alterar a fonte do texto matemático.
 % Por conta disso, a classe |ucsmonograph| é preparada para carregar conjuntos de caracteres e a fonte Latin Modern automaticamente se o documento estiver sendo compilado com o Lua\LaTeX.
 % 
+%\section{Instalação}
+%
+%\subsection{Editores \LaTeX\ off-line}
+% Se você está utilizando um editor \LaTeX\ off-line, basta buscar pela classe |ucsmonograph| no seu \emph{package manager}.
+% A classe |ucsmonograph| integra as distribuições do MiK\TeX\ e do \TeX Live. 
+%
+%\subsection{Editores \LaTeX\ on-line}
+% Para editores \LaTeX\ on-line como o Share\LaTeX\ ou o Overleaf, você precisa fazer o download dos arquivos compilados da classe |ucsmonograph|.
+% Para isso, vá até o repositório do projeto no GitHub em \url{https://github.com/HenriqueBaron/ucsmonograph} e abra a página \emph{Releases}.
+% Faça o \emph{download} da última versão da classe, baixando tanto o arquivo |.cls| como o arquivo |.pdf|.
+% O arquivo |.cls| pode ser carregado para o seu projeto online e utilizado normalmente.
 %
 %\section{Utilização}
 % Para utilizar a classe |ucsmonograph|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas.
