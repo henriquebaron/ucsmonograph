@@ -89,7 +89,8 @@ Informações de contato:
 * Perfil do TeX Stack Exchange: https://tex.stackexchange.com/users/153467/henrique-baron
 
 ## Licença
-Este trabalho utiliza a LPPL, a Licença Pública do Projeto LaTeX, e deve ser distribuído sob suas condições. A versão mais recente da licença está disponível (em inglês) em
+Este trabalho utiliza a LPPL, a Licença Pública do Projeto LaTeX, e deve ser distribuído sob suas condições.
+A versão mais recente da licença está disponível (em inglês) em
 
 http://www.latex-project.org/lppl.txt
 
