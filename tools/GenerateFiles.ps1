@@ -11,4 +11,4 @@ makeindex -s gind.ist -o ./$class.ind ./$class.idx
 pdflatex ./$class.dtx
 
 # Apaga os arquivos auxiliares
-Remove-Item *.aux,*.glo,*.gls,*.gls,*.idx,*.ilg,*.ind,*.log
+Remove-Item *.aux,*.glo,*.gls,*.gls,*.idx,*.ilg,*.ind,*.log,*.out
