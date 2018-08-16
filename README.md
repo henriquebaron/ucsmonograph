@@ -80,6 +80,14 @@ The downloaded CLS file can be copied directly to your on-line project.
 v1.0.0 (2018-08-04, Henrique Baron):
 * Initial version
 
+v1.1.0 (2018-08-16, Henrique Baron):
+* `hyperref` package setup done automatically through macros \autor, \titulo, \preambulo etc.;
+* Created macro `\palavraschave` to define the PDF keywords (for the `hyperref` package);
+* `dedicatoria` formats the page entirely. No more need to have a `minipage` environment inside it;
+* Corrected bug that needed the call to `glossaries-extra` package;
+* Corrected spacing after chapter title;
+* Enhancements in the documentation.
+
 # ucsmonograph - Português (BR)
 Esta é uma classe LaTeX para formatação de trabalhos acadêmicos segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
 
