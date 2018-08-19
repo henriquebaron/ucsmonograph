@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{468}
+% \CheckSum{504}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -537,6 +537,15 @@
 \counterwithout{quadro}{chapter}
 
 %    \end{macrocode}
+% Estende o conteúdo da macro |\listofquadros| para criar o bookmark no PDF automaticamente.
+%    \begin{macrocode}
+\let\@oldlistofquadros\listofquadros
+\def\listofquadros{%
+	\pdfbookmark[0]{\listquadroname}{loq}
+	\@oldlistofquadros
+}
+
+%    \end{macrocode}
 %\end{macro}
 %
 %\subsection{Modificações sobre a classe abnTeX2}
@@ -723,6 +732,42 @@
 %\subsection{Outras redefinicoes}
 % Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
 %
+%\begin{macro}{\listoffigures}
+% Estende a macro da lista de figuras para incluir o bookmark no PDF automaticamente.
+%    \begin{macrocode}
+\let\@oldlistoffigures\listoffigures
+\def\listoffigures{%
+	\pdfbookmark[0]{\listfigurename}{lof}
+	\@oldlistoffigures
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\listoftables}
+% Estende a macro da lista de tabelas para incluir o bookmark no PDF automaticamente.
+%    \begin{macrocode}
+\let\@oldlistoftables\listoftables
+\def\listoftables{%
+	\pdfbookmark[0]{\listtablename}{lot}
+	\@oldlistoftables
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\tableofcontents}
+% Estende a macro do sumário para incluir o bookmark no PDF automaticamente.
+%    \begin{macrocode}
+\let\@oldtableofcontents\tableofcontents
+\def\tableofcontents{%
+	\pdfbookmark[0]{\contentsname}{toc}
+	\@oldtableofcontents
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\glsxtruserparen}
 % Essa macro, trazida pelo pacote |glossaries-extra| define o conteúdo entre parênteses quando a key |user1| estiver preenchida.
 % Essa redefinição só acontece se a geração de lista de siglas estiver ativa.
@@ -900,6 +945,7 @@
 % O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
 %    \begin{macrocode}
 	\WithSuffix\newcommand\listofsiglas*{%
+		\pdfbookmark[0]{\listadesiglasname}{loa}
 		\printunsrtglossary[type=acronym,title=\listadesiglasname]%
 		\addtocounter{table}{-1}%
 	}%
@@ -930,6 +976,7 @@
 % O comando foi criado com * para manter o padrão dos outros comandos de lista utilizados.
 %    \begin{macrocode}
 	\WithSuffix\newcommand\listofsimbolos*{%
+		\pdfbookmark[0]{\listadesimbolosname}{los}
 		\printunsrtglossary[type=symbols,title=\listadesimbolosname]%
 		\addtocounter{table}{-1}% 
 	}%
