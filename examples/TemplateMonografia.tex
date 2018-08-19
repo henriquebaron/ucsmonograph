@@ -1,11 +1,9 @@
 \documentclass[12pt,oneside,english,brazil,lmodern]{ucsmonograph}
-\usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage{amsmath}
-\usepackage{glossaries-extra} % Desnecessário a partir da v1.0.1
 
 \titulo{Meu trabalho de conclusão de curso}
 \autor{Pedro Silva}
@@ -14,36 +12,16 @@
 \local{Caxias do Sul}
 \preambulo{Trabalho de conclusão de curso apresentado à Universidade de Caxias do Sul como requisito parcial à obtenção de grau de Engenheiro Mecânico. Área de concentração: Projetos de Máquinas: Estática e Dinâmica Aplicada.}
 \orientador{Dr. Orientador do Meu Trabalho}
-
-% Configuração do pacote hyperref, segundo manual do abnTeX2: não remover
-\makeatletter
-\hypersetup{%
-	unicode=true,
-	pdftitle={\@title},
-	pdfauthor={\@author},
-	pdfsubject={\imprimirpreambulo},
-	pdfkeywords={Minhas. Palavras. Chave}
-	pdfcreator={LaTeX with ucsmonograph},
-	colorlinks=true,
-	linkcolor=black,
-	citecolor=black,
-}
-\makeatother
+\palavraschave{Minhas. Palavras. Chave}
 
 \begin{document}
-	\setlength{\afterchapskip}{20pt} % Desnecessário a partir da v1.0.1
 	\imprimircapa
 	\imprimirfolhaderosto
 	
 	\imprimirfolhadeaprovacao[Empresa ABC Ltda.]{10/12/2018}{Dr. Avaliador Banca 1}{Me. Avaliador Banca 2}{Eng. Avaliador Externo}
 	
 	\begin{dedicatoria}
-		\vspace*{\fill}
-		\hspace{.45\textwidth}
-		\begin{minipage}[b]{.5\textwidth}
-			\SingleSpacing%
-			Dedico este trabalho à minha mãe, meu pai e meu cachorro\dots
-		\end{minipage}
+		Dedico este trabalho à minha mãe, meu pai e meu cachorro\dots
 	\end{dedicatoria}
 
 	\begin{resumo}
