@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{505}
+% \CheckSum{0}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -557,7 +557,7 @@
 %
 %\begin{macro}{Configuracoes}
 % Redefinição de medidas e comandos que não são utilizados pelo usuário como, por exemplo, comandos internos que definem a fonte utilizada.\\
-%Redefinição do estilo abntheadings, que coloca no cabeçalho das páginas o nome do capítulo/seção e uma linha horizontal, além do número de página.
+% Redefinição do estilo abntheadings, que coloca no cabeçalho das páginas o nome do capítulo/seção e uma linha horizontal, além do número de página.
 % O padrão da UCS pede somente o número de página.
 %    \begin{macrocode}
 \makepagestyle{abntheadings}
@@ -669,6 +669,25 @@
 	\vfill
 	\expandafter\uppercase\expandafter{\imprimirlocal}\\
 	\expandafter\uppercase\expandafter{\thedate}%
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\fonte}
+% Modificação para permitir que a fonte seja alinhada a esquerda.
+% Como o texto deve ficar alinhado com a imagem ou a tabela/quadro, um parâmetro opcional com a largura do texto foi criado.
+% O valor padrão para este parâmetro é a largura da linha.
+% O parâmetro opcional na definição original deste comando, que altera o texto ''Fonte'' não é mais utilizado.
+%    \begin{macrocode}
+\renewcommand{\ABNTEXcaptionfontedelim}{: }
+\renewcommand{\fonte}[2][\linewidth]{%
+	\par
+	\begin{minipage}[h]{#1}
+		\vspace{2pt}
+		\raggedright\footnotesize\fontename%
+		\ABNTEXcaptionfontedelim\ignorespaces #2
+	\end{minipage}
 }
 
 %    \end{macrocode}
