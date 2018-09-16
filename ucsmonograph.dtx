@@ -88,7 +88,7 @@
 %\@oldendedicatoria,%
 %\@secondoftwo,%
 %\\,%
-%\ ,%
+%\',%
 %\ABNTEXsubsubsectionfont,%
 %\ABNTEXsubsubsectionfontsize,%
 %\ABNTEXsubsubsubsectionfont,%
@@ -128,6 +128,7 @@
 %\ifluatex,%
 %\ifthenelse,%
 %\ifx,%
+%\ignorespaces,%
 %\itshape,%
 %\l@section,%
 %\let,%
@@ -293,6 +294,18 @@
 %      Dedico este trabalho a minha família etc.
 % \end{dedicatoria}
 %\end{verbatim}
+%
+%\DescribeMacro{\fonte}
+% Essa macro foi redefinida para que o texto seja alinhado à esquerda -- e não centralizado como na definição original na classe |abntex2| -- e para que o texto ''Fonte'' seja separado do argumento passado pelo usuário por dois pontos, e não por um travessão.
+%
+% A função do parâmetro opcional desta macro também foi modificada.
+% Agora a sua chamada é feita como |\fonte|\oarg{largura}\marg{fonte}.
+% O parâmetro opcional \meta{largura} é utilizado para definir a lagura da linha em que o texto da fonte será escrito.
+% O seu valor deve ser correspondente à largura da tabela ou quadro em que se deseja inserir, para que haja o alinhamento entre o texto e a lateral esquerda da tabela ou quadro.
+% O valor padrão deste argumento opcional é a largura da linha.
+%
+% A função do argumento opcional para a classe |abntex2| é a de mudar o texto ''Fonte''.
+% Essa mudança não é possível na classe |ucsmonograph|.
 %
 %\subsection{Outras redefinições}
 % Macros fornecidas por outros pacotes ou classes e que foram alteradas na classe |ucsmonograph| são descritas aqui.
@@ -675,7 +688,7 @@
 %\end{macro}
 %
 %\begin{macro}{\fonte}
-% Modificação para permitir que a fonte seja alinhada a esquerda.
+% Modificação para permitir que a fonte seja alinhada à esquerda.
 % Como o texto deve ficar alinhado com a imagem ou a tabela/quadro, um parâmetro opcional com a largura do texto foi criado.
 % O valor padrão para este parâmetro é a largura da linha.
 % O parâmetro opcional na definição original deste comando, que altera o texto ''Fonte'' não é mais utilizado.
@@ -751,7 +764,7 @@
 %    \end{macrocode}
 %\end{macro}
 %
-%\subsection{Outras redefinicoes}
+%\subsection{Outras redefinições}
 % Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
 %
 %\begin{macro}{\listoffigures}
