@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{519}
+% \CheckSum{515}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -697,6 +697,7 @@
 \renewcommand{\ABNTEXcaptionfontedelim}{: }
 \renewcommand{\fonte}[2][\linewidth]{%
 	\par
+	\centering%
 	\begin{minipage}[h]{#1}
 		\vspace{2pt}
 		\raggedright\footnotesize\fontename%
@@ -944,11 +945,8 @@
 %    \begin{macrocode}
 \newcommand{\incluirimagem}[4][1]{%
 	\caption{#3}%
-	\adjustimage{scale=#1,fbox=1.5pt {\fboxsep} 1pt,gstore width=\larguraimagem,center}{#2} \par %
-	\centering%
-	\begin{minipage}[h]{\larguraimagem-14pt}%
-		\raggedright\footnotesize Fonte: #4 %
-	\end{minipage}
+	\adjustimage{scale=#1,fbox=1.5pt {\fboxsep} 1pt,gstore width=\larguraimagem,center}{#2}
+	\fonte[\larguraimagem-14pt]{#4}
 }
 
 %    \end{macrocode}
