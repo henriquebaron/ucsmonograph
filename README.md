@@ -90,6 +90,14 @@ v1.1.0 (2018-08-16, Henrique Baron):
 * Corrected spacing after chapter title;
 * Enhancements in the documentation.
 
+v1.1.1 (2018-09-16, Henrique Baron):
+* Advisor's (orientador) name in the title page is now aligned to the 
+middle of the page, instead of aligning to the right;
+* List of symbols' title display corrected for online LaTeX editors 
+(because of accents in the ''Lista de Símbolos'' title);
+* `\fonte` macro redefined to align the text to the left, instead of 
+centering.
+
 # ucsmonograph - Português (BR)
 Esta é uma classe LaTeX para formatação de trabalhos acadêmicos segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
 
