@@ -90,7 +90,7 @@ v1.1.0 (2018-08-16, Henrique Baron):
 * Corrected spacing after chapter title;
 * Enhancements in the documentation.
 
-v1.1.1 (2018-09-16, Henrique Baron):
+v1.1.1 (2018-09-18, Henrique Baron):
 * Advisor's (orientador) name in the title page is now aligned to the 
 middle of the page, instead of aligning to the right;
 * List of symbols' title display corrected for online LaTeX editors 
