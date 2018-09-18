@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{515}
+% \CheckSum{543}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -302,8 +302,9 @@
 % A função do parâmetro opcional desta macro também foi modificada.
 % Agora a sua chamada é feita como |\fonte|\oarg{largura}\marg{fonte}.
 % O parâmetro opcional \meta{largura} é utilizado para definir a lagura da linha em que o texto da fonte será escrito.
-% O seu valor deve ser correspondente à largura da tabela ou quadro em que se deseja inserir, para que haja o alinhamento entre o texto e a lateral esquerda da tabela ou quadro.
-% O valor padrão deste argumento opcional é a largura da linha.
+% Se essa macro for utilizada depois de um ambiente |tabular|, a |ucsmonograph| detectará a largura da tabela, fazendo com que o texto da fonte fique alinhado corretamente à esquerda.
+% Se um valor apropriado não puder ser determinado, o texto da fonte terá a largura da linha (fornecido pela macro |\linewidth|).
+% O parâmetro opcional permite, enfim, que o usuário defina uma largura customizada para a linha onde a fonte será escrita.
 %
 % A função do argumento opcional para a classe |abntex2| é a de mudar o texto ''Fonte''.
 % Essa mudança não é possível na classe |ucsmonograph|.
@@ -485,6 +486,8 @@
 
 \RequirePackage{adjustbox}
 \newlength\larguraimagem
+\newlength\larguratabular
+\newlength\largurafonte
 
 \RequirePackage{chngcntr}
 \counterwithout{equation}{chapter}
@@ -695,10 +698,15 @@
 % O parâmetro opcional na definição original deste comando, que altera o texto ''Fonte'' não é mais utilizado.
 %    \begin{macrocode}
 \renewcommand{\ABNTEXcaptionfontedelim}{: }
-\renewcommand{\fonte}[2][\linewidth]{%
+\renewcommand{\fonte}[2][\larguratabular]{%
+	\ifthenelse{\equal{\strip@pt#1}{0}}{%
+		\setlength\largurafonte\linewidth
+	}{%
+		\setlength\largurafonte{#1}
+	}
 	\par
 	\centering%
-	\begin{minipage}[h]{#1}
+	\begin{minipage}[h]{\largurafonte}
 		\vspace{2pt}
 		\raggedright\footnotesize\fontename%
 		\ABNTEXcaptionfontedelim\ignorespaces #2
@@ -768,6 +776,24 @@
 %
 %\subsection{Outras redefinições}
 % Aqui modificações e redefinições de outros comandos que não pertencem à classe |abntex2| são redefinidos.
+%
+%\begin{environment}{tabular}
+% Extensão do ambiente |tabular| para incluir o conteúdo dentro de uma |adjustbox| e armazenar a largura do quadro ou tabela.
+% Essa medida pode ser utilizada pela macro |\fonte| para formatação da largura.
+%    \begin{macrocode}
+\let\@oldtabular\tabular
+\let\@oldendtabular\endtabular
+\def\tabular{%
+	\begin{adjustbox}{gstore width=\larguratabular}
+	\@oldtabular
+}
+\def\endtabular{%
+	\@oldendtabular
+	\end{adjustbox}
+}
+
+%    \end{macrocode}
+%\end{environment}
 %
 %\begin{macro}{\listoffigures}
 % Estende a macro da lista de figuras para incluir o bookmark no PDF automaticamente.
