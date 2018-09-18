@@ -95,7 +95,8 @@ v1.1.1 (2018-09-16, Henrique Baron):
 middle of the page, instead of aligning to the right;
 * List of symbols' title display corrected for online LaTeX editors 
 (because of accents in the ''Lista de Símbolos'' title);
-* `\fonte` macro redefined to align the text to the left, instead of 
+* `\fonte` macro redefined to align the text to the left of the 
+previous tabular environment, instead of 
 centering.
 
 # ucsmonograph - Português (BR)
