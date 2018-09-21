@@ -615,6 +615,19 @@
 %    \end{macrocode}
 %\end{macro}
 %
+%\begin{macro}{\cft...font}
+% Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO.
+% Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
+%    \begin{macrocode}
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
+\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
+\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
+
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\linespread}
 % Espaçamento entre linhas e entre parágrafos.
 % Para 12pt, o espaçamento equivalente a 1.5 (do MS Word) é 1.4, obtido experimentalmente.
@@ -634,19 +647,6 @@
 % Alteração do espaçamento entre o título do capítulo e o corpo do texto.
 %    \begin{macrocode}
 \AtBeginDocument{\setlength{\afterchapskip}{20pt}}
-
-%    \end{macrocode}
-%\end{macro}
-%
-%\begin{macro}{\cft...font}
-% Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO.
-% Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
-%    \begin{macrocode}
-\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
-\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
-\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
-\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
-\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
 
 %    \end{macrocode}
 %\end{macro}
