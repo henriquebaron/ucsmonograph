@@ -572,8 +572,7 @@
 % Aqui, as alterações de medidas e redefinições de comandos oferecidos pela classe |abntex2| são exibidos.
 % Essas mudanças foram realizadas para adequar os padrões dessa classe à especificação da UCS.
 %
-%\begin{macro}{Configuracoes}
-% Redefinição de medidas e comandos que não são utilizados pelo usuário como, por exemplo, comandos internos que definem a fonte utilizada.\\
+%\begin{macro}{abntheadings}
 % Redefinição do estilo abntheadings, que coloca no cabeçalho das páginas o nome do capítulo/seção e uma linha horizontal, além do número de página.
 % O padrão da UCS pede somente o número de página.
 %    \begin{macrocode}
@@ -582,6 +581,9 @@
 \makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
 
 %    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\list...name}
 % Nomes de elementos pré-textuais que precisam ser alterados
 %    \begin{macrocode}
 \addto\captionsbrazil{%
@@ -590,6 +592,9 @@
 }
 
 %    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\ABNTEX...font}
 % Redefinição de fontes e tamanhos para os capítulos e seções, para o corpo do documento.
 %    \begin{macrocode}
 \renewcommand{\ABNTEXchapterfont}{\bfseries}
@@ -608,10 +613,17 @@
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
 
 %    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\afterchapskip}
 % Alteração do espaçamento entre o título do capítulo e o corpo do texto.
 %    \begin{macrocode}
 \AtBeginDocument{\setlength{\afterchapskip}{20pt}}
+
 %    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\cft...font}
 % Redefinição de fontes e tamanhos para os capítulos e seções, NO SUMÁRIO.
 % Como o guia da UCS solicita que a apresentação dos títulos seja idêntica no sumário e no texto, as fontes declaradas acima são utilizadas, o que não é o padrão da classe abnTeX2.
 %    \begin{macrocode}
