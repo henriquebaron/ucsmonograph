@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{543}
+% \CheckSum{559}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -620,6 +620,30 @@
 \renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
 \renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
 \renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\printchapternum}
+% As macros que escreve o número do capítulo e da seção no corpo do trabalho foram levemente modificadas para reduzir o espaçamento entre o número do capítulo/seção e o seu título.
+%    \begin{macrocode}
+\renewcommand{\printchapternum}{%
+	\tocprintchapter
+	\setboolean{abntex@innonumchapter}{false}
+	\chapnumfont%
+	\space\thechapter%
+	\ifthenelse{\boolean{abntex@apendiceousecao}}{%
+		\tocinnonumchapter
+		\ABNTEXcaptiondelim%
+	}{}
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@seccntformat}
+%    \begin{macrocode}
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\  }
 
 %    \end{macrocode}
 %\end{macro}
