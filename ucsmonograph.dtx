@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{561}
+% \CheckSum{566}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -647,6 +647,20 @@
 % Alteração do espaçamento entre o título do capítulo e o corpo do texto.
 %    \begin{macrocode}
 \AtBeginDocument{\setlength{\afterchapskip}{20pt}}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{enumerate}
+% Configuração das listas para atender ao padrão da UCS.
+%    \begin{macrocode}
+\setlist[enumerate,1]{labelindent=\parindent,leftmargin=0.6cm+\parindent,nosep,label=\alph*)}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{itemize}
+%    \begin{macrocode}
+\setlist[itemize,1]{nosep,label=--}
 
 %    \end{macrocode}
 %\end{macro}
