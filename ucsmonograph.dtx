@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{566}
+% \CheckSum{574}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -644,9 +644,18 @@
 %\end{macro}
 %
 %\begin{macro}{\afterchapskip}
-% Alteração do espaçamento entre o título do capítulo e o corpo do texto.
+% Alteração do espaçamento entre o título dos capítulos e das seções e o corpo do texto.
 %    \begin{macrocode}
-\AtBeginDocument{\setlength{\afterchapskip}{20pt}}
+\setlength\afterchapskip\baselineskip
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\setaftersecskip}
+%    \begin{macrocode}
+\setaftersecskip\baselineskip
+\setaftersubsecskip\baselineskip
+\setaftersubsubsecskip\baselineskip
+\setafterparaskip\baselineskip
 
 %    \end{macrocode}
 %\end{macro}
