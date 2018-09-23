@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{585}
+% \CheckSum{596}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -666,7 +666,21 @@
 \setlength\textfloatsep{1.5\baselineskip}
 \setlength\floatsep{1.5\baselineskip}
 \setlength\intextsep{1.5\baselineskip}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\abovedisplayskip}
+% Ajusta os espaçamentos verticais acima e abaixo das equações.
+%    \begin{macrocode}
+\AtBeginDocument{%
+	\setlength\abovedisplayskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\belowdisplayskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\abovedisplayshortskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\belowdisplayshortskip{1\baselineskip plus 5pt minus 5pt}
+}
 
+%    \end{macrocode}
+%\end{macro}
 %
 %\begin{macro}{enumerate}
 % Configuração das listas para atender ao padrão da UCS.
