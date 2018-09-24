@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{592}
+% \CheckSum{595}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -726,7 +726,7 @@
 \renewcommand{\imprimircapa}{%
 	\pdfbookmark[0]{Capa}{Capa}%
 	\begin{capa}%
-		\centering%
+		\bfseries\centering%
 		\expandafter\uppercase\expandafter{\imprimirinstituicao}%
 		\vfill
 %    \end{macrocode}
@@ -757,7 +757,7 @@
 % Da mesma forma, a macro interna da classe |abntex2| que gera o conteúdo da folha de rosto precisou ser redefinida para ficar semelhante à capa, também remodelada.
 %    \begin{macrocode}
 \renewcommand{\folhaderostocontent}{%
-	\centering%
+	\bfseries\centering%
 	\expandafter\uppercase\expandafter{\theauthor}%
 	\vfill
 	\vfill
@@ -780,6 +780,7 @@
 		\end{minipage}%
 	}%
 	\vfill
+	\bfseries
 	\expandafter\uppercase\expandafter{\imprimirlocal}\\
 	\expandafter\uppercase\expandafter{\thedate}%
 }
