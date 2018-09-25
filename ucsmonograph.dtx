@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{595}
+% \CheckSum{606}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -695,6 +695,19 @@
 
 %    \end{macrocode}
 %\end{macro}
+%
+%\begin{environment}{thebibliography}
+% Modificação do espaçamento entre cada referência na bibliografia.
+%    \begin{macrocode}
+\let\@oldthebibliography\thebibliography
+\def\thebibliography#1{%
+	\@oldthebibliography{#1}
+	\setlength\parskip{0pt}
+	\setlength\itemsep\baselineskip
+}
+
+%    \end{macrocode}
+%\end{environment}
 %
 %\begin{macro}{\printchapternum}
 % As macros que escreve o número do capítulo e da seção no corpo do trabalho foram levemente modificadas para reduzir o espaçamento entre o número do capítulo/seção e o seu título.
