@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{577}
+% \CheckSum{606}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -644,9 +644,40 @@
 %\end{macro}
 %
 %\begin{macro}{\afterchapskip}
-% Alteração do espaçamento entre o título do capítulo e o corpo do texto.
+% Alteração do espaçamento entre o título dos capítulos e das seções e o corpo do texto.
 %    \begin{macrocode}
-\AtBeginDocument{\setlength{\afterchapskip}{20pt}}
+\setlength\afterchapskip\baselineskip
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\setaftersecskip}
+%    \begin{macrocode}
+\setaftersecskip\baselineskip
+\setaftersubsecskip\baselineskip
+\setaftersubsubsecskip\baselineskip
+\setafterparaskip\baselineskip
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\textfloatsep}
+% Modificação no espaçamento entre os floats e o texto.
+%    \begin{macrocode}
+\setlength\textfloatsep{1.5\baselineskip}
+\setlength\floatsep{1.5\baselineskip}
+\setlength\intextsep{1.5\baselineskip}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\abovedisplayskip}
+% Ajusta os espaçamentos verticais acima e abaixo das equações.
+%    \begin{macrocode}
+\AtBeginDocument{%
+	\setlength\abovedisplayskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\belowdisplayskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\abovedisplayshortskip{1\baselineskip plus 5pt minus 5pt}
+	\setlength\belowdisplayshortskip{1\baselineskip plus 5pt minus 5pt}
+}
 
 %    \end{macrocode}
 %\end{macro}
@@ -708,7 +739,7 @@
 \renewcommand{\imprimircapa}{%
 	\pdfbookmark[0]{Capa}{Capa}%
 	\begin{capa}%
-		\centering%
+		\bfseries\centering%
 		\expandafter\uppercase\expandafter{\imprimirinstituicao}%
 		\vfill
 %    \end{macrocode}
@@ -739,7 +770,7 @@
 % Da mesma forma, a macro interna da classe |abntex2| que gera o conteúdo da folha de rosto precisou ser redefinida para ficar semelhante à capa, também remodelada.
 %    \begin{macrocode}
 \renewcommand{\folhaderostocontent}{%
-	\centering%
+	\bfseries\centering%
 	\expandafter\uppercase\expandafter{\theauthor}%
 	\vfill
 	\vfill
@@ -762,6 +793,7 @@
 		\end{minipage}%
 	}%
 	\vfill
+	\bfseries
 	\expandafter\uppercase\expandafter{\imprimirlocal}\\
 	\expandafter\uppercase\expandafter{\thedate}%
 }
@@ -1002,9 +1034,6 @@
 				\mdseries%
 				\SingleSpacing%
 				\imprimirpreambulo%
-				\begin{flushright}%
-					\imprimirorientadorRotulo~\imprimirorientador%
-				\end{flushright}%
 			\end{minipage}%
 		}
 		\vspace{24pt} \par %
