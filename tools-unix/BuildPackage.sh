@@ -7,7 +7,7 @@ rm -r $class/
 rm $class.zip
 
 # Compila os arquivos
-./tools-ubuntu/GenerateFiles.sh
+./tools-unix/GenerateFiles.sh
 
 # Cria uma pasta e coloca os arquivos necessários
 mkdir ./$class
