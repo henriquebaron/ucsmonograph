@@ -99,6 +99,20 @@ middle of the page, instead of aligning to the right;
 previous tabular environment, instead of 
 centering.
 
+v1.1.2 (2018-09-28, Henrique Baron):
+Fixes:
+* Horizontal spacing between section number and title;
+* Line spread changed to MS Word's 1.5 equivalent;
+* Vertical spacing in float legends with the `\fonte` macro;
+* List item alignment with `enumerate` and `itemize` environments;
+* Labels for `enumerate` and `itemize` environments configured;
+* Vertical spacing between references in bibliography;
+* Vertical spacing after chapter and section titles;
+* Vertical spacing before and after equations and floats;
+* Advisor's (orientador) name removed from the approval page under the work's description;
+* Contents of cover and title page in boldface;
+* Paragraph first line indent.
+
 # ucsmonograph - Português (BR)
 Esta é uma classe LaTeX para formatação de trabalhos acadêmicos segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
 
