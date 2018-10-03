@@ -12,6 +12,7 @@ rm $class.zip
 # Cria uma pasta e coloca os arquivos necessários
 mkdir ./$class
 cp ./$class.* ./$class/
+cp ./README.md ./$class/README.md
 
 zip -r $class.zip $class/
 
