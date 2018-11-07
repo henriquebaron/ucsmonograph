@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{590}
+% \CheckSum{585}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -1034,24 +1034,20 @@
 			\expandafter\uppercase\expandafter{\theauthor} %
 			\vspace{1.5cm} \par
 			\expandafter\uppercase\expandafter{\thetitle} %
-			\vspace{0.5cm}
 		\end{center}
-		
+		\vfill
 		\abntex@ifnotempty{\imprimirpreambulo}{%
 			\hspace{.45\textwidth} %
 			\begin{minipage}{.5\textwidth}%
 				\mdseries%
 				\SingleSpacing%
 				\imprimirpreambulo%
+				\vspace{24pt} \par %
+				\bfseries Aprovado(a) em #2 %
 			\end{minipage}%
 		}
-		\vspace{24pt} \par %
-		\hspace{.45\textwidth}%
-		\begin{minipage}{.5\textwidth}%
-			\bfseries%
-			Aprovado(a) em #2 %
-		\end{minipage}%
-		\vspace{3cm} \par %		
+		\vfill		
+		\flushbottom
 		\noindent\textbf{Banca Examinadora} %
 		\begin{SingleSpace} %
 			\vspace*{\ABNTEXsignskip}%
