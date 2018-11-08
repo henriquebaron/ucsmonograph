@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{616}
+% \CheckSum{0}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -1097,7 +1097,7 @@
 %\begin{macro}{\imprimirfolhadeaprovacao}
 % Imprime a folha de aprovação.
 %    \begin{macrocode}
-\newcommand{\imprimirfolhadeaprovacao}[5][Universidade de Caxias do Sul - UCS]{%
+\newcommand{\imprimirfolhadeaprovacao}[2][\imprimirinstituicao]{%
 	\begin{folhadeaprovacao}%
 		\begin{center}%
 			\bfseries %
@@ -1124,18 +1124,18 @@
 			\vspace*{\ABNTEXsignskip}%
 			\noindent%
 			\imprimirorientador\\
-			Universidade de Caxias do Sul - UCS \par
+			\imprimirinstituicao \par
 			\vspace*{\ABNTEXsignskip}%
 			\noindent%
-			#3\\
-			Universidade de Caxias do Sul - UCS \par
+			\@avaliadori\\
+			\imprimirinstituicao \par
 			\vspace*{\ABNTEXsignskip}
 			\noindent
-			#4\\
-			Universidade de Caxias do Sul - UCS \par
+			\@avaliadorii\\
+			\imprimirinstituicao \par
 			\vspace*{\ABNTEXsignskip}
 			\noindent %
-			#5\\
+			\@avaliadorext\\
 			#1 %
 		\end{SingleSpace} %
 	\end{folhadeaprovacao} %
