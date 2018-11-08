@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{0}
+% \CheckSum{635}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -1124,19 +1124,25 @@
 			\vspace*{\ABNTEXsignskip}%
 			\noindent%
 			\imprimirorientador\\
-			\imprimirinstituicao \par
-			\vspace*{\ABNTEXsignskip}%
-			\noindent%
-			\@avaliadori\\
-			\imprimirinstituicao \par
-			\vspace*{\ABNTEXsignskip}
-			\noindent
-			\@avaliadorii\\
-			\imprimirinstituicao \par
-			\vspace*{\ABNTEXsignskip}
-			\noindent %
-			\@avaliadorext\\
-			#1 %
+			\imprimirinstituicao
+			\ifthenelse{\not\equal{\@avaliadori}{}}{%
+				\par
+				\vspace*{\ABNTEXsignskip}%
+				\noindent\@avaliadori\\
+				\imprimirinstituicao
+			}{}
+			\ifthenelse{\not\equal{\@avaliadorii}{}}{%
+				\par
+				\vspace*{\ABNTEXsignskip}%
+				\noindent\@avaliadorii\\
+				\imprimirinstituicao
+			}{}
+			\ifthenelse{\not\equal{\@avaliadorext}{}}{%
+				\par
+				\vspace*{\ABNTEXsignskip}
+				\noindent\@avaliadorext\\
+				#1 %
+			}{}
 		\end{SingleSpace} %
 	\end{folhadeaprovacao} %
 }
