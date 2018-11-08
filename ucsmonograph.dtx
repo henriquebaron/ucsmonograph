@@ -1021,6 +1021,75 @@
 		pdfkeywords={#1}
 	}
 }
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@areadoconhecimento}
+% É uma macro utilizada como variável, que armazena o texto da área do conhecimento que deve aparecer na folha de rosto.
+%    \begin{macrocode}
+\newcommand\@areadoconhecimento{}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\areadoconhecimento}
+% Redefine o conteúdo da macro |\@areadoconhecimento|, cujo conteúdo é exibido na folha de rosto do trabalho.
+%    \begin{macrocode}
+\newcommand\areadoconhecimento[1]{%
+	\renewcommand\@areadoconhecimento{#1}
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@avaliadori}
+% Macro utilizada como variável que contém o nome do primeiro avaliador da banca, exibido na folha de aprovação.
+%    \begin{macrocode}
+\newcommand\@avaliadori{}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\avaliadori}
+% Redefine o conteúdo da macro |\@avaliadori|, cujo conteúdo é exibido na folha de aprovação.
+%    \begin{macrocode}
+\newcommand\avaliadori[1]{%
+	\renewcommand\@avaliadori{#1}
+}
+
+%    \end{macrocode}
+%\end{macro}]
+%
+%\begin{macro}{\@avaliadorii}
+% Macro utilizada como variável que contém o nome do segundo avaliador da banca, exibido na folha de aprovação.
+%    \begin{macrocode}
+\newcommand\@avaliadorii{}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\avaliadorii}
+% Redefine o conteúdo da macro |\@avaliadorii|, cujo conteúdo é exibido na folha de aprovação.
+%    \begin{macrocode}
+\newcommand\avaliadorii[1]{%
+	\renewcommand\@avaliadorii{#1}
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@avaliadorext}
+% Macro utilizada como variávei que contém o nome do avaliador externo da banca, se houver.
+%    \begin{macrocode}
+\newcommand\@avaliadorext{}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\avaliadorext}
+% Redefine o conteúdo da macro |\@avaliadorext|, cujo conteúdo é exibido na folha de aprovação, se a macro contiver algum texto.
+%    \begin{macrocode}
+\newcommand\avaliadorext[1]{%
+	\renewcommand\@avaliadorext{#1}
+}
+
 %    \end{macrocode}
 %\end{macro}
 %
