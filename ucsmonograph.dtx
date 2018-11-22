@@ -326,14 +326,13 @@
 % Ela deve ser chamada, portanto, \emph{no preâmbulo do seu código}, isto é, antes de |\begin{document}|.
 %
 %\DescribeMacro{\imprimirfolhadeaprovacao}
-% Gera a folha de aprovação no padrão solicitado pela UCS, e recebe até cinco argumentos:
+% Gera a folha de aprovação no padrão solicitado pela UCS, e recebe um ou dois argumentos:
 %\begin{verbatim}
-%	\imprimirfolhadeaprovacao[inst.aval.ext.]{data aprov.}{aval. 1}{aval. 2}{aval.ext}
+%	\imprimirfolhadeaprovacao[inst.aval.ext.]{data aprov.}
 %\end{verbatim}
 % O parâmetro opcional \meta{inst. aval. ext.} define a instituição ou empresa de onde vem o avaliador convidado.
 % Caso não preenchida, a instituição é definida como ''UCS -- Universidade de Caxias do Sul''.
-% Os outros parâmetros obrigatórios definem, respectivamente, a data de aprovação, o nome dos dois avaliadores da UCS, e o nome do avaliador externo (convidado).
-% O nome do orientador do trabalho -- que aparece também na folha de aprovação -- não é necessário nesta macro, visto que ele deve ser definido no preâmbulo do documento pela macro |\orientador|\marg{nome}, definida na classe |abntex2|.
+% O parâmetro obrigatório define a data de aprovação que é impressa na folha, que corresponde à data de defesa do trabalho.
 %
 %\DescribeMacro{\incluirimagem}
 % Encapsula o comando |\includegraphics|, padrão do \LaTeX, acrescentando alguns elementos gráficos.
