@@ -75,10 +75,8 @@
 % 	Right brace \} Tilde \~}
 %
 %\changes{v1.0.0}{2018/07/31}{Versão inicial}
-%\changes{v1.1.0}{2018/08/16}{Melhorias no ambiente dedicatória; configuração automática do pacote hyperref; correção no espaçamento após título de capítulo; correção na necessidade de chamar o pacote glossaries-extra; geração automática dos bookmarks do PDF}
-%\changes{v1.1.1}{2018/09/18}{Correções: justificação do nome do orientador na folha rosto; acentuação no título da lista de símbolos; exibição da fonte de quadros e tabelas através da macro fonte}
-%\changes{v1.1.2}{2018/09/28}{Correções: espaçamento horizontal após números de seção; espaçamento entre linhas de 1,5; espaçamento vertical na legenda com a macro fonte; posicionamento das listas com enumerate; configuração automática das listas (alíneas); espaçamento vertical entre referências bibliográficas; espaçamento vertical após títulos de capítulos e seções; espaçamento vertical acima e abaixo de equações; espaçamento vertical entre floats e o texto; removido o nome do orientador abaixo da natureza na folha de aprovação; conteúdo da capa e da folha de rosto em negrito; recuo da primeira linha do parágrafo}
-%\changes{v1.2.0}{2018/11/22}{Criação da macro incluirimagem*; adicionar os comandos de área do conhecimento e avaliadores; alteração dos argumentos da macro para a folha de aprovação; inclusão do pacote icomma; alteração de layout na capa, folha de rosto e folha de aprovação}
+%\changes{v1.1.0}{2018/08/16}{Configuração automática do pacote hyperref; correção na necessidade de chamar o pacote glossaries-extra; geração automática dos bookmarks do PDF}
+%\changes{v1.2.0}{2018/11/22}{inclusão do pacote icomma}
 %
 %\GetFileInfo{ucsmonograph.dtx}
 %
@@ -594,6 +592,7 @@
 %\end{macro}
 %
 %\begin{macro}{\list...name}
+%\changes{v1.1.1}{2018/09/18}{Correção do nome da lista de símbolos}
 % Nomes de elementos pré-textuais que precisam ser alterados
 %    \begin{macrocode}
 \addto\captionsbrazil{%
@@ -639,6 +638,7 @@
 %\end{macro}
 %
 %\begin{macro}{\linespread}
+%\changes{v1.1.2}{2018/09/28}{Corrigido espaçamento entre linhas para o equivalente a 1.5 do MS Word}
 % Espaçamento entre linhas e entre parágrafos.
 % Para 12pt, o espaçamento equivalente a 1.5 (do MS Word) é 1.4, obtido experimentalmente.
 %    \begin{macrocode}
@@ -653,6 +653,7 @@
 %\end{macro}
 %
 %\begin{macro}{\parindent}
+%\changes{v1.1.2}{2018/09/28}{Aumentada indentação}
 % Recuo da primeira linha do parágrafo em 1.5 cm.
 %    \begin{macrocode}
 \setlength\parindent{1.5cm}
@@ -661,6 +662,8 @@
 %\end{macro}
 %
 %\begin{macro}{\afterchapskip}
+%\changes{v1.1.0}{2018/08/16}{Corrigido espaçamento abaixo}
+%\changes{v1.1.2}{2018/09/28}{Corrigido espaçamento abaixo}
 % Alteração do espaçamento entre o título dos capítulos e das seções e o corpo do texto.
 %    \begin{macrocode}
 \setlength\afterchapskip\baselineskip
@@ -668,6 +671,7 @@
 %\end{macro}
 %
 %\begin{macro}{\setaftersecskip}
+%\changes{v1.1.2}{2018/09/28}{Corrigido espaço abaixo}
 %    \begin{macrocode}
 \setaftersecskip\baselineskip
 \setaftersubsecskip\baselineskip
@@ -678,6 +682,7 @@
 %\end{macro}
 %
 %\begin{macro}{\textfloatsep}
+%\changes{v1.1.2}{2018/09/28}{Corrigido o valor de espaçamento}
 % Modificação no espaçamento entre os floats e o texto.
 %    \begin{macrocode}
 \setlength\textfloatsep{1.5\baselineskip}
@@ -687,6 +692,7 @@
 %\end{macro}
 %
 %\begin{macro}{\abovedisplayskip}
+%\changes{v1.1.2}{2018/09/28}{Corrigido o espaçamento acima e abaixo de equações}
 % Ajusta os espaçamentos verticais acima e abaixo das equações.
 %    \begin{macrocode}
 \AtBeginDocument{%
@@ -701,6 +707,7 @@
 %\end{macro}
 %
 %\begin{macro}{enumerate}
+%\changes{v1.1.2}{2018/09/28}{Ajustar parâmetros de acordo com o padrão da UCS}
 % Configuração das listas para atender ao padrão da UCS.
 %    \begin{macrocode}
 \setlist[enumerate,1]{labelindent=\parindent,leftmargin=0.6cm+\parindent,nosep,label=\alph*)}
@@ -715,6 +722,7 @@
 %\end{macro}
 %
 %\begin{environment}{thebibliography}
+%\changes{v1.1.2}{2018/09/28}{Corrigido o espaçamento entre as referências}
 % Modificação do espaçamento entre cada referência na bibliografia.
 %    \begin{macrocode}
 \let\@oldthebibliography\thebibliography
@@ -728,6 +736,7 @@
 %\end{environment}
 %
 %\begin{macro}{\printchapternum}
+%\changes{v1.1.2}{2018/09/28}{Corrigir o espaçamento após o número de seção}
 % As macros que escreve o número do capítulo e da seção no corpo do trabalho foram levemente modificadas para reduzir o espaçamento entre o número do capítulo/seção e o seu título.
 %    \begin{macrocode}
 \renewcommand{\printchapternum}{%
@@ -752,6 +761,8 @@
 %\end{macro}
 %
 %\begin{macro}{\imprimircapa}
+%\changes{v1.1.2}{2018/09/28}{Mudar o conteúdo para negrito}
+%\changes{v1.2.0}{2018/11/22}{Mudança do layout gerado}
 % O comando que gera a capa precisou ser completamente reescrito para atender ao padrão requisitado pela UCS.
 %    \begin{macrocode}
 \renewcommand{\imprimircapa}{%
@@ -786,6 +797,9 @@
 %\end{macro}
 %
 %\begin{macro}{\folhaderostocontent}
+%\changes{v1.1.1}{2018/09/18}{Corrigir justificação do nome do orientador}
+%\changes{v1.1.2}{2018/09/28}{Mudar o conteúdo para negrito}
+%\changes{v1.2.0}{2018/11/22}{Mudança do layout gerado}
 % Da mesma forma, a macro interna da classe |abntex2| que gera o conteúdo da folha de rosto precisou ser redefinida para ficar semelhante à capa, também remodelada.
 %    \begin{macrocode}
 \renewcommand{\folhaderostocontent}{%
@@ -821,6 +835,8 @@
 %\end{macro}
 %
 %\begin{macro}{\fonte}
+%\changes{v1.1.1}{2018/09/18}{Reimplementada para justificar texto à esquerda}
+%\changes{v1.1.2}{2018/09/28}{Corrigido o espaçamento vertical antes da fonte}
 % Modificação para permitir que a fonte seja alinhada à esquerda.
 % Como o texto deve ficar alinhado com a imagem ou a tabela/quadro, um parâmetro opcional com a largura do texto foi criado.
 % O valor padrão para este parâmetro é a largura da linha.
@@ -845,6 +861,7 @@
 %\end{macro}
 %
 %\begin{environment}{dedicatoria}
+%\changes{v1.1.0}{2018/08/16}{Aplicação de melhorias}
 % Extensão da macro |dedicatoria| para isentar o usuário da necessidade de formatar manualmente a posição do texto.
 %    \begin{macrocode}
 \let\@olddedicatoria\dedicatoria
@@ -1042,6 +1059,7 @@
 %\end{macro}
 %
 %\begin{macro}{\areadoconhecimento}
+%\changes{v1.2.0}{2018/11/22}{Nova macro}
 % Redefine o conteúdo da macro |\@areadoconhecimento|, cujo conteúdo é exibido na folha de rosto do trabalho.
 %    \begin{macrocode}
 \newcommand\areadoconhecimento[1]{%
@@ -1059,6 +1077,7 @@
 %\end{macro}
 %
 %\begin{macro}{\avaliadori}
+%\changes{v1.2.0}{2018/11/22}{Nova macro}
 % Redefine o conteúdo da macro |\@avaliadori|, cujo conteúdo é exibido na folha de aprovação.
 %    \begin{macrocode}
 \newcommand\avaliadori[1]{%
@@ -1076,6 +1095,7 @@
 %\end{macro}
 %
 %\begin{macro}{\avaliadorii}
+%\changes{v1.2.0}{2018/11/22}{Nova macro}
 % Redefine o conteúdo da macro |\@avaliadorii|, cujo conteúdo é exibido na folha de aprovação.
 %    \begin{macrocode}
 \newcommand\avaliadorii[1]{%
@@ -1093,6 +1113,7 @@
 %\end{macro}
 %
 %\begin{macro}{\avaliadorext}
+%\changes{v1.2.0}{2018/11/22}{Nova macro}
 % Redefine o conteúdo da macro |\@avaliadorext|, cujo conteúdo é exibido na folha de aprovação, se a macro contiver algum texto.
 %    \begin{macrocode}
 \newcommand\avaliadorext[1]{%
@@ -1103,6 +1124,8 @@
 %\end{macro}
 %
 %\begin{macro}{\imprimirfolhadeaprovacao}
+%\changes{v1.1.2}{2018/09/28}{Removido o nome do orientador abaixo da natureza do trabalho}
+%\changes{v1.2.0}{2018/11/22}{Modificados os argumentos da função e o layout gerado}
 % Imprime a folha de aprovação.
 %    \begin{macrocode}
 \newcommand{\imprimirfolhadeaprovacao}[2][\imprimirinstituicao]{%
@@ -1170,6 +1193,7 @@
 %\end{macro}
 %
 %\begin{macro}{\incluirimagem*}
+%\changes{v1.2.0}{2018/11/22}{Nova macro}
 % Inserção de uma figura sem descricão, apenas com fonte.
 %    \begin{macrocode}
 \WithSuffix\newcommand\incluirimagem*[3][1]{%
