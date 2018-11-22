@@ -344,6 +344,15 @@
 % O valor padrão é 1.
 % Os outros parâmetros indicam o caminho para o arquivo de imagem, a descrição -- que aparecerá acima da imagem, após o número -- e o nome da fonte e ano da imagem, que aparecem abaixo da ilustração, em fonte reduzida.
 %
+%\DescribeMacro{\incluirimagem*}
+% Possui a mesma função da macro |\incluirimagem|, porém não adiciona uma legenda na parte superior da imagem e não a inclui na lista de figuras.
+% Ela tem, portanto, um argumento a menos na sua chamada:
+%\begin{verbatim}
+%	\incluirimagem*[escala]{caminho}{fonte e ano}	
+%\end{verbatim}
+% Deve-se atentar que o uso dessa macro \emph{não} está de acordo com a especificação do guia da UCS.
+% Ela tem a função de auxiliar a inclusão de imagens em partes do documento como anexos ou apêndices, cujo conteúdo interno não deve ser referenciado no sumário.
+%
 %\DescribeMacro{\incluirsiglas}
 % Faz a chamada para o arquivo |.bib| que contém as definições de siglas.
 % Essa macro só é definida se a opção |siglas| estiver habilitada, e leva o parâmetro obrigatório \marg{caminho}, que dá o caminho para o arquivo |.bib|.
