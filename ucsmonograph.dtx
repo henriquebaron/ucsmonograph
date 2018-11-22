@@ -323,14 +323,38 @@
 % Esta macro foi criada para ser utilizada de maneira similar às macros |\autor|, |\titulo|, |\preambulo| e |\orientador| que são fornecidas pela classe |abntex2|.
 % Ela deve ser chamada, portanto, \emph{no preâmbulo do seu código}, isto é, antes de |\begin{document}|.
 %
+%\DescribeMacro{\aredoconhecimento}
+% Define a área do conhecimento do trabalho desenvolvido, que é impressa na capa do trabalho.
+% Esta macro possui apenas um argumento.
+%
+%\DescribeMacro{\avaliadori}
+% Esta macro também tem apenas um argumento, e define o primeiro avaliador da banca avaliadora.
+% O nome desse avaliador é impresso na folha de aprovação com a macro |\imprimirfolhadeaprovacao|.
+%
+%\DescribeMacro{\avaliadorii}
+% É semelhante à macro |\avaliadori|, e define o segundo avaliador da banca examinadora, para ser impresso na folha de aprovação.
+% A instituição deste avaliador é preenchida automaticamente nessa folha com o conteúdo da macro |\instituicao|.
+%
+% Portanto, se o segundo avaliador for de uma instituição externa ou empresa, a macro |\avaliadorext| deve ser utilizada.
+%
+%\DescribeMacro{\avaliadorext}
+% É semelhante às macros anteriores de avaliadores, definindo o avaliador de instituição externa, se ele existir.
+% A instituição que este avaliador representa é definida diretamente como argumento opcional da macro |\imprimirfolhadeaprovacao|.
+%
 %\DescribeMacro{\imprimirfolhadeaprovacao}
 % Gera a folha de aprovação no padrão solicitado pela UCS, e recebe um ou dois argumentos:
 %\begin{verbatim}
 %	\imprimirfolhadeaprovacao[inst.aval.ext.]{data aprov.}
 %\end{verbatim}
 % O parâmetro opcional \meta{inst. aval. ext.} define a instituição ou empresa de onde vem o avaliador convidado.
-% Caso não preenchida, a instituição é definida como ''UCS -- Universidade de Caxias do Sul''.
+% Caso não preenchida, a instituição é definida automaticamente com o conteúdo da macro |\instituicao|.
+% O nome da instituição impresso abaixo do nome dos outros avaliadores é sempre preenchido com o nome da instituição definido na macro |\instituicao|.
+%
 % O parâmetro obrigatório define a data de aprovação que é impressa na folha, que corresponde à data de defesa do trabalho.
+%
+% Para a banca examinadora, são impressos os nomes definidos com as macros |\orientador|, |\avaliadori|, |\avaliadorii| e |\avaliadorext|.
+% Se algum destes nomes não tiver sido definido nas macros, a macro |\imprimirfolhadeaprovacao| não gerará erros, apenas reajustará a página sem exibi-los.
+% Isso permite que seja impressa a folha de aprovação com diferentes números de avaliadores, com ou sem um avaliador de instituição externa.
 %
 %\DescribeMacro{\incluirimagem}
 % Encapsula o comando |\includegraphics|, padrão do \LaTeX, acrescentando alguns elementos gráficos.
