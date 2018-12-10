@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{643}
+% \CheckSum{648}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -734,7 +734,9 @@
 %\changes{v1.1.2}{2018/09/28}{Ajustar parâmetros de acordo com o padrão da UCS}
 % Configuração das listas para atender ao padrão da UCS.
 %    \begin{macrocode}
-\setlist[enumerate,1]{labelindent=\parindent,leftmargin=0.6cm+\parindent,nosep,label=\alph*)}
+\newlength\@enumerateindent
+\setlength\@enumerateindent{\parindent+0.6cm}
+\setlist[enumerate,1]{labelindent=\parindent,leftmargin=\@enumerateindent,nosep,label=\alph*)}
 %    \end{macrocode}
 %\end{macro}
 %
