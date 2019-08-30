@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{ucsmonograph}
 %<*class>
-	[2018/12/10 v1.2.1 Padrao de monografias da UCS]
+	[2019/09/01 v1.3.0 Padrao de monografias da UCS]
 %</class>
 %
 %<*driver>
@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{648}
+% \CheckSum{0}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -77,6 +77,7 @@
 %\changes{v1.0.0}{2018/07/31}{Versão inicial}
 %\changes{v1.1.0}{2018/08/16}{Configuração automática do pacote hyperref; correção na necessidade de chamar o pacote glossaries-extra; geração automática dos bookmarks do PDF}
 %\changes{v1.2.0}{2018/11/22}{inclusão do pacote icomma; posicionamento vertical com raggedright}
+%\changes{v1.2.1}{2018/12/10}{Correção de compatibilidade com o pacote substr}
 %
 %\GetFileInfo{ucsmonograph.dtx}
 %
@@ -183,7 +184,7 @@
 %
 %\section{Introdução}
 % Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
-% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia na linguagem, abstraindo algumas configurações de formatação e comandos mais complexos.
+% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX\ por alunos da UCS que têm pouca experiencia na linguagem, abstraindo algumas configurações de formatação e comandos mais complexos.
 %
 % A classe |ucsmonograph| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT.
 % O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
@@ -191,7 +192,7 @@
 %\subsection{Se seu documento possui fórmulas}
 % Pode ser necessário compilar o trabalho com Lua\LaTeX.
 % Mesmo para iniciantes no \LaTeX, essa não é uma mudança complicada, e pode ser necessária para atender uma exigência da UCS.
-% Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente.
+% Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX\ e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente.
 % Isso serve para deixar o documento de fato mais legível e mais ''bonito'', e é possível negociar com os responsáveis se existe margem para manter essa diferença de fontes entre texto e equações.
 %
 % Caso não seja permitido, é o ponto onde o Lua\LaTeX~entra.
@@ -818,6 +819,30 @@
 		\expandafter\uppercase\expandafter{\imprimirlocal}\\
 		\expandafter\uppercase\expandafter{\thedate}%
 	\end{capa}%
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{environment}{folhaderosto}
+%\changes{v1.3.0}{2019/08/29}{Redefinir os ambientes internos de folha de rosto}
+% Os ambientes |folhaderosto| e |folhaderosto*| da classe |abntex2| foram redefinidos para corrigir um erro provocado por comandos frágeis.
+% Um erro era gerado se não fosse deixada uma linha em branco (quebra de parágrafo) após o comando |imprimirfolhadefosto|.
+%    \begin{macrocode}
+\renewenvironment{folhaderosto}[1]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
+\renewenvironment{folhaderosto*}[1]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}
+
+%    \end{macrocode}
+%\end{environment}
+%
+%\begin{macro}{\imprimirfolhaderosto}
+%\changes{v1.3.0}{2019/08/29}{Redefinir o comando para imprimir a folha de rosto}
+% O comando |\imprimirfolhaderosto| da classe |abntex2| foi redefinido para corrigir um erro provocado por comando frágil.
+% Um erro era gerado se não fosse deixada uma linha em branco após o comando.
+%    \begin{macrocode}
+\renewcommand{\imprimirfolhaderosto}[1][\folhaderostoname]{%
+	\@ifstar{\imprimirfolhaderostostar#1}{%
+	\imprimirfolhaderostonostar#1}
 }
 
 %    \end{macrocode}
