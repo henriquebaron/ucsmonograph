@@ -296,6 +296,22 @@
 % \end{dedicatoria}
 %\end{verbatim}
 %
+%\DescribeEnv{epigrafe}
+% O ambiente |epigrafe| foi modificado da mesma forma que o ambiente |dedicatoria|, para que o posicionamento do texto seja feito automaticamente como pede o Guia da UCS.
+% Portanto, o ambiente pode ser utilizado da seguinte maneira:
+%\begin{verbatim}
+% \begin{epigrafe}
+%      ''Uma mente que se abre a uma nova ideia nunca mais volta ao tamanho 
+%		original.''
+%      \vspace{12pt}
+%
+%      \textbf{Albert Einstein}
+% \end{epigrafe}
+%\end{verbatim}
+%
+% O guia solicita que o nome do autor seja destacado em negrito.
+% A mudança desta parte e o espaçamento do nome para o resto do texto devem ser feitos manualmente, como mostrado no exemplo acima.
+%
 %\DescribeMacro{\fonte}
 % Essa macro foi redefinida para que o texto seja alinhado à esquerda -- e não centralizado como na definição original na classe |abntex2| -- e para que o texto ''Fonte'' seja separado do argumento passado pelo usuário por dois pontos, e não por um travessão.
 %
@@ -932,6 +948,28 @@
 
 %    \end{macrocode}
 %\end{environment}
+%
+%\begin{environment}{epigrafe}
+%\changes{v1.3.0}{2019/08/29}{Redefinição do ambiente de epígrafe}
+% Extensão do ambiente |epigrafe| para isentar o usuário da necessidade de formatar manualmente a posição do texto.
+%    \begin{macrocode}
+\let\@oldepigrafe\epigrafe
+\let\@oldendepigrafe\endepigrafe
+\def\epigrafe{%
+	\@oldepigrafe %
+	\vspace*{\fill}%
+	\hspace{0.5\textwidth}%
+	\begin{minipage}[b]{.45\textwidth}%
+		\SingleSpacing\itshape\raggedleft%
+}
+\def\endepigrafe{%
+	\end{minipage}%
+	\@oldendepigrafe
+}
+
+%    \end{macrocode}
+%\end{environment}
+%
 %\begin{macro}{\autor}
 % Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
 %    \begin{macrocode}
