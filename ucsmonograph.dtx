@@ -970,6 +970,41 @@
 %    \end{macrocode}
 %\end{environment}
 %
+%\begin{environment}{resumo}
+%\changes{v1.3.0}{2019/09/02}{Redefinição do ambiente resumo}
+%O ambiente |resumo| foi totalmente redefinido para que o idioma do resumo seja selecionado como um argumento opcional.
+%    \begin{macrocode}
+\renewcommand\abstractnamefont\chaptitlefont
+\newboolean{@abstractotherlanguage}
+\setboolean{@abstractotherlanguage}{false}
+\DeclareRobustCommand\resumo{\@ifnextchar[{\@@resumo}{\@resumo}}
+\def\@resumo{%
+	\let\@oldabstractname\abstractname
+	\PRIVATEbookmarkthis{\abstractname}
+	\def\abstractname{\expandafter\uppercase\expandafter{\@oldabstractname}}
+	\begin{abstract}
+	\SingleSpacing
+}
+\def\@@resumo[#1]{%
+	\begin{otherlanguage}{#1}
+	\setboolean{@abstractotherlanguage}{true}
+	\let\@oldabstractname\abstractname
+	\PRIVATEbookmarkthis{\abstractname}
+	\def\abstractname{\expandafter\uppercase\expandafter{\@oldabstractname}}
+	\begin{abstract}
+	\SingleSpacing
+}
+\def\endresumo{%
+	\end{abstract}
+	\PRIVATEclearpageifneeded
+	\ifthenelse{\boolean{@abstractotherlanguage}}{\end{otherlanguage}}{}
+	\setboolean{@abstractotherlanguage}{false}
+	\def\abstractname\@oldabstractname
+}
+
+%    \end{macrocode}
+%\end{environment}
+%
 %\begin{macro}{\autor}
 % Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
 %    \begin{macrocode}
