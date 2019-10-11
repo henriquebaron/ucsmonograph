@@ -582,6 +582,25 @@
 %    \end{macrocode}
 %\end{macro}
 %
+%\subsection{Definição de constantes}
+%Declaração das constantes de texto da classe.
+%\begin{macro}{\palavraschavename}
+% Constante que armazena a expressão \textit{Palavras-chave}, no idioma em que o texto estiver sendo escrito.
+%    \begin{macrocode}
+\newcommand{\palavraschavename}{Palavras-chave:}
+\addto\captionsenglish{
+    \renewcommand\palavraschavename{Keywords:}
+}
+\addto\captionsgerman{
+    \renewcommand\palavraschavename{Stichw\"orter:}
+}
+\addto\captionsspanish{
+    \renewcommand\palavraschavename{Palabras-llave:}
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
 %\subsection{Lista de quadros}
 % Mostra a implementação da lista de quadros, que é um elemento obrigatório em monografias da UCS, mas não é implementado na classe |abntex2|.
 %\begin{macro}{Quadros}
@@ -980,7 +999,7 @@
 %
 %\begin{environment}{resumo}
 %\changes{v1.3.0}{2019/09/02}{Redefinição do ambiente resumo}
-%O ambiente |resumo| foi totalmente redefinido para que o idioma do resumo seja selecionado como um argumento opcional.
+% O ambiente |resumo| foi totalmente redefinido para que o idioma do resumo seja selecionado como um argumento opcional.
 %    \begin{macrocode}
 \renewcommand\abstractnamefont\chaptitlefont
 \newboolean{@abstractotherlanguage}
@@ -1012,6 +1031,16 @@
 
 %    \end{macrocode}
 %\end{environment}
+%
+%\begin{macro}{\imprimirpalavraschave}
+%\changes{v1.3.0}{Criação do comando}
+% O comando |\imprimirpalavraschave| foi criado para formatar o texto que contém as palavras-chave do documento.
+%    \begin{macrocode}
+\newcommand\imprimirpalavraschave{%
+	\textbf{\palavraschavename}\ \@palavraschave}
+
+%    \end{macrocode}
+%\end{macro}
 %
 %\begin{macro}{\autor}
 % Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
