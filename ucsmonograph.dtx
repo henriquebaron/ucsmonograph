@@ -1008,7 +1008,7 @@
 \def\@resumo{%
 	\let\@oldabstractname\abstractname
 	\PRIVATEbookmarkthis{\abstractname}
-	\def\abstractname{\expandafter\uppercase\expandafter{\@oldabstractname}}
+	\def\abstractname{\MakeUppercase{\@oldabstractname}}
 	\begin{abstract}
 	\SingleSpacing
 }
@@ -1017,7 +1017,7 @@
 	\setboolean{@abstractotherlanguage}{true}
 	\let\@oldabstractname\abstractname
 	\PRIVATEbookmarkthis{\abstractname}
-	\def\abstractname{\expandafter\uppercase\expandafter{\@oldabstractname}}
+	\def\abstractname{\MakeUppercase{\@oldabstractname}}
 	\begin{abstract}
 	\SingleSpacing
 }
