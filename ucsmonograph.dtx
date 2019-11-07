@@ -1037,7 +1037,7 @@
 % O comando |\imprimirpalavraschave| foi criado para formatar o texto que contém as palavras-chave do documento.
 %    \begin{macrocode}
 \newcommand\imprimirpalavraschave{%
-	\textbf{\palavraschavename}\ \@palavraschave}
+	\textbf{\palavraschavename}\ \@palavraschavecontent}
 
 %    \end{macrocode}
 %\end{macro}
@@ -1193,20 +1193,29 @@
 %\subsection{Comandos específicos desta classe}
 % No final do código são definidos os comandos produzidos pela classe |ucsmonograph| propriamente dita.
 %
-%\begin{macro}{\@palavraschave}
+%\begin{macro}{\@palavraschavecontent}
 % É uma macro utilizada como variável, que armazena as palavras-chave definidas pelo usuário.
 %    \begin{macrocode}
-\newcommand{\@palavraschave}{}
+\newcommand{\@palavraschavecontent}{}
 %    \end{macrocode}
 %\end{macro}
 %
 %\begin{macro}{\palavraschave}
-% Redefine o conteúdo da macro |\@palavraschave| e configura também esse conteúdo no pacote |hyperref|.
+%\changes{v1.3.0}{Adicionar parâmetro opcional de idioma ao comando}
+% Redefine o conteúdo da macro |\@palavraschavecontent| e configura também esse conteúdo no pacote |hyperref|.
+% Se o parâmetro opcional for utilizado, o conteúdo é armazenado para ser utilizado no resumo em outros idiomas,
+% e o hyperref não é configurado neste caso.
 %    \begin{macrocode}
-\newcommand{\palavraschave}[1]{%
-	\renewcommand{\@palavraschave}{#1}
+\DeclareRobustCommand\palavraschave{\@ifnextchar[{\@@palavraschave}{\@palavraschave}}
+\def\@palavraschave#1{%
+	\renewcommand\@palavraschavecontent{#1}
 	\hypersetup{%
 		pdfkeywords={#1}
+	}
+}
+\def\@@palavraschave[#1]#2{
+	\expandafter\addto\csname captions#1\endcsname{
+		\renewcommand\@palavraschavecontent{#2}
 	}
 }
 
