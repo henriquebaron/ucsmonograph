@@ -374,6 +374,26 @@
 % Esta macro foi criada para ser utilizada de maneira similar às macros |\autor|, |\titulo|, |\preambulo| e |\orientador| que são fornecidas pela classe |abntex2|.
 % Ela deve ser chamada, portanto, \emph{no preâmbulo do seu código}, isto é, antes de |\begin{document}|.
 %
+% A macro |\palavraschave| recebe também um argumento opcional, que define o idioma das palavras-chave fornecidas.
+% Como as palavras-chave são exibidas no \emph{resumo}, que deve ser incluído em dois idiomas,
+% esta macro também deve ser chamada duas vezes: uma sem o parâmetro opcional,
+% que indica que são as palavras-chave no idioma principal do documento;
+% e outra com o nome do idioma estrangeiro que é utilizado no resumo do trabalho.
+% A chamada duplicada desta macro é exibida no exemplo abaixo:
+%\begin{verbatim}
+% \palavraschave{Vibração. Modelagem. Defeito. Rolamento.}
+% \palavraschave[english]{Vibration. Modelling. Defect. Bearing.}
+%\end{verbatim}
+%
+% É importante que o segundo idioma que é passado como parâmetro para a macro tenha sido declarado como opção ao chamar a classe,
+% como é mostrado na Seção \ref{sec:chamada-classe}.
+%
+%\DescribeMacro{\imprimirpalavraschave}
+% Esta macro simplesmente exibe as palavras-chave configuradas com o comando\\
+% |\palavraschave|\oarg{idioma}\marg{palavras},
+% precedidas da expressão \emph{Palavras-chave}, destacada em negrito,
+% conforme especificado pelo guia da UCS.
+%
 %\DescribeMacro{\aredoconhecimento}
 % Define a área do conhecimento do trabalho desenvolvido, que é impressa na capa do trabalho.
 % Esta macro possui apenas um argumento.
