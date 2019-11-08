@@ -253,6 +253,42 @@
 %
 % Também para o caso dos editores online, a lista de símbolos pode ser feita manualmente no ambiente |simbolos|, documentado no manual da classe |abntex2|.
 %
+%\subsection{Exemplo básico}
+% Para o desenvolvimento de uma monografia com a classe |ucsmonograph|, algumas propriedades do documento devem ser definidas, como o autor, título, entre outros.
+% Existem macros implementadas nesta classe e na classe |abntex2| (que é utilizada como base) disponibilizadas para atribuir estas propriedades,
+% e que devem ser chamadas no começo do documento.
+% Seja neste manual ou no manual da classe |abntex2|, estas funções estão documentadas.
+% De toda forma, um exemplo básico da chamada destas, para servir como ponto de partida, é exibido abaixo:
+%\begin{verbatim}
+% \documentclass[12pt,oneside,english,brazil,lmodern,cite=num]{ucsmonograph}
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+%
+% \titulo{Modelagem numérica de vibração em rolamentos defeituosos}
+% \autor{Henrique Baron}
+% \data{2018}
+% \instituicao{Universidade de Caxias do Sul}
+% \local{Caxias do Sul}
+% \preambulo{Trabalho de conclusão de curso apresentado à Universidade de Caxias do Sul
+% como requisito parcial à obtenção do grau de Engenheiro Mecânico.}
+% \areadoconhecimento{Área do conhecimento de ciências exatas e engenharias}
+% \orientador{Prof. Me. Pedro da Silva} % Orientador do trabalho
+% \avaliadori{Prof. Me. Paulo Oliveira} % Avaliador da banca, da instituição
+% \avaliadorii{Profa. Dra. Maria Pereira} % Avaliador da banca, da instituição
+% \avaliadorext[Empresa X]{Cristiane Silveira} % Avaliaodr da banca, de instituição externa
+% % Palavras-chave que aparecem no resumo em português
+% \palavraschave{Vibra\c{c}\~ao. Modelagem. Defeito. Rolamento.} 
+% % Palavras-chave em idioma estrangeiro (o mesmo configurado nas opções da classe!) 
+% \palavraschave[english]{Vibration. Modelling. Defect. Bearing.} 
+%
+% \begin{document}
+% \imprimircapa
+% \imprimirfolhaderosto
+% \imprimirfolhadeaprovacao{29/11/2018}
+%
+% \end{document}
+%\end{verbatim} 
+%
 %\subsection{Quadros e lista de quadros}
 % Por padrão, o \LaTeX~já oferece meios de criar tabelas e a lista de tabelas.
 % Para o caso dos quadros, que são um elemento obrigatório pelo Guia da UCS, não há nenhum recurso desenvolvido, nem na classe |abntex2|.
