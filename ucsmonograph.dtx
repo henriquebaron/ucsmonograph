@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{ucsmonograph}
 %<*class>
-	[2018/12/10 v1.2.1 Padrao de monografias da UCS]
+	[2019/11/07 v1.3.0 Padrao de monografias da UCS]
 %</class>
 %
 %<*driver>
@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{648}
+% \CheckSum{771}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -77,6 +77,7 @@
 %\changes{v1.0.0}{2018/07/31}{Versão inicial}
 %\changes{v1.1.0}{2018/08/16}{Configuração automática do pacote hyperref; correção na necessidade de chamar o pacote glossaries-extra; geração automática dos bookmarks do PDF}
 %\changes{v1.2.0}{2018/11/22}{inclusão do pacote icomma; posicionamento vertical com raggedright}
+%\changes{v1.2.1}{2018/12/10}{Correção de compatibilidade com o pacote substr}
 %
 %\GetFileInfo{ucsmonograph.dtx}
 %
@@ -183,7 +184,7 @@
 %
 %\section{Introdução}
 % Esta classe foi desenvolvida para formatar monografias segundo o Guia para Elaboração de Trabalhos Acadêmicos da Universidade de Caxias do Sul.
-% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX~por alunos da UCS que têm pouca experiencia na linguagem, abstraindo algumas configurações de formatação e comandos mais complexos.
+% Este código foi desenvolvido tendo por base a versão 2018 do documento, e tem por objetivo simplificar o uso do \LaTeX\ por alunos da UCS que têm pouca experiencia na linguagem, abstraindo algumas configurações de formatação e comandos mais complexos.
 %
 % A classe |ucsmonograph| é baseada na classe |abntex2|, que formata documentos acadêmicos segundo as normas ABNT.
 % O código desenvolvido realiza alterações em algumas macros e expõe outros que são necessários para antender requisitos da UCS, mas que não são oferecidos pela classe |abntex2| por padrão.
@@ -191,7 +192,7 @@
 %\subsection{Se seu documento possui fórmulas}
 % Pode ser necessário compilar o trabalho com Lua\LaTeX.
 % Mesmo para iniciantes no \LaTeX, essa não é uma mudança complicada, e pode ser necessária para atender uma exigência da UCS.
-% Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente.
+% Isso porque o padrão da universidade diz que a fonte deve ser a mesma em \emph{todo} o documento, inclusive nas fórmulas, onde o \LaTeX\ e até mesmo outros editores como o Microsoft Word utilizam uma fonte diferente.
 % Isso serve para deixar o documento de fato mais legível e mais ''bonito'', e é possível negociar com os responsáveis se existe margem para manter essa diferença de fontes entre texto e equações.
 %
 % Caso não seja permitido, é o ponto onde o Lua\LaTeX~entra.
@@ -214,7 +215,7 @@
 % Para utilizar a classe |ucsmonograph|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas.
 % Este manual descreve apenas os comandos desenvolvidos na própria classe |ucsmonograph| e outras redefinições de comandos que podem ser pertinentes ao usuário.
 %
-%\subsection{Chamada da classe e opções}
+%\subsection{Chamada da classe e opções}\label{sec:chamada-classe}
 %\DescribeMacro{\documentclass}
 % A classe pode ser chamada com as opções-padrão que são nativas do \LaTeX~e são encaminhadas para a classe |abntex2|.
 % Um exemplo típico para chamar a classe ao iniciar o documento pode ser
@@ -252,6 +253,42 @@
 %
 % Também para o caso dos editores online, a lista de símbolos pode ser feita manualmente no ambiente |simbolos|, documentado no manual da classe |abntex2|.
 %
+%\subsection{Exemplo básico}
+% Para o desenvolvimento de uma monografia com a classe |ucsmonograph|, algumas propriedades do documento devem ser definidas, como o autor, título, entre outros.
+% Existem macros implementadas nesta classe e na classe |abntex2| (que é utilizada como base) disponibilizadas para atribuir estas propriedades,
+% e que devem ser chamadas no começo do documento.
+% Seja neste manual ou no manual da classe |abntex2|, estas funções estão documentadas.
+% De toda forma, um exemplo básico da chamada destas, para servir como ponto de partida, é exibido abaixo:
+%\begin{verbatim}
+% \documentclass[12pt,oneside,english,brazil,lmodern,cite=num]{ucsmonograph}
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+%
+% \titulo{Modelagem numérica de vibração em rolamentos defeituosos}
+% \autor{Henrique Baron}
+% \data{2018}
+% \instituicao{Universidade de Caxias do Sul}
+% \local{Caxias do Sul}
+% \preambulo{Trabalho de conclusão de curso apresentado à Universidade de Caxias do Sul
+% como requisito parcial à obtenção do grau de Engenheiro Mecânico.}
+% \areadoconhecimento{Área do conhecimento de ciências exatas e engenharias}
+% \orientador{Prof. Me. Pedro da Silva} % Orientador do trabalho
+% \avaliadori{Prof. Me. Paulo Oliveira} % Avaliador da banca, da instituição
+% \avaliadorii{Profa. Dra. Maria Pereira} % Avaliador da banca, da instituição
+% \avaliadorext[Empresa X]{Cristiane Silveira} % Avaliaodr da banca, de instituição externa
+% % Palavras-chave que aparecem no resumo em português
+% \palavraschave{Vibra\c{c}\~ao. Modelagem. Defeito. Rolamento.} 
+% % Palavras-chave em idioma estrangeiro (o mesmo configurado nas opções da classe!) 
+% \palavraschave[english]{Vibration. Modelling. Defect. Bearing.} 
+%
+% \begin{document}
+% \imprimircapa
+% \imprimirfolhaderosto
+% \imprimirfolhadeaprovacao{29/11/2018}
+%
+% \end{document}
+%\end{verbatim} 
+%
 %\subsection{Quadros e lista de quadros}
 % Por padrão, o \LaTeX~já oferece meios de criar tabelas e a lista de tabelas.
 % Para o caso dos quadros, que são um elemento obrigatório pelo Guia da UCS, não há nenhum recurso desenvolvido, nem na classe |abntex2|.
@@ -267,6 +304,10 @@
 %
 %\DescribeMacro{\listofquadros*}
 % Gera a lista de quadros, sem colocar essa entrada no sumário.
+%
+%\section{Macros redefinidas e implementadas}
+% As subseções seguintes descrevem macros e ambientes que foram implementados na classe |ucsmonograph|,
+% ou redefinições de comandos da classe |abntex2| que foram realizadas nesta classe.
 %
 %\subsection{Redefinições da classe abn\TeX 2}
 % Alguns comandos e ambientes expostos pela classe |abntex2| foram redefinidos ou modificados na classe |ucsmonograph|, e essas alterações são apresentadas a seguir.
@@ -286,6 +327,36 @@
 %\DescribeMacro{\orientador}
 % A função da macro |\orientador|\marg{nome} foi estendida de maneira semelhante à macro |\autor|.
 %
+%\DescribeEnv{resumo}
+% O ambiente |resumo| foi totalmente redefinido na classe |ucsmonograph|.
+% Ele continua recebendo um parâmetro opcional, no entanto, agora este parâmetro deve receber o nome da língua em que o resumo será escrito,
+% caso seja diferente do idioma padrão do documento.
+% Com isso, o padrão de hifenização do idioma selecionado é aplicado a todo o texto contido no ambiente.
+%
+% Conforme a norma ABNT, o resumo do trabalho deve ser apresentado no idioma vernáculo (no caso da UCS, o português brasileiro),
+% e em um idioma estrangeiro.
+% Dessa maneira, o ambiente |resumo| deve ser utilizado duas vezes no documento: uma delas não leva o argumento opcional,
+% enquanto a outra deve receber o idioma em que o resumo é apresentado.
+% Um exemplo com as duas chamadas do ambiente é mostrado abaixo:
+%\begin{verbatim}
+% \begin{resumo}
+% O presente trabalho demonstra a aplicação da Teoria da Relatividade...
+% \end{resumo}
+%
+% \begin{resumo}[english]
+% The present work demonstrates the application of the Relativity Theory...
+% \end{resumo}
+%\end{verbatim}
+% Com isso, o título \emph{RESUMO} e a expressão \emph{Palavras-chave} também são adaptados ao idioma escolhido.
+% É importante que o idioma estrangeiro selecionado tenha sido incluído \emph{também nas opções da classe},
+% como é mostrado na Seção \ref{sec:chamada-classe}.
+%
+% Por fim, as palavras-chave do documento, definidas com a macro\\
+%|\palavraschave|\oarg{idioma}\marg{palavras},
+% são incluídas automaticamente no fim do resumo.
+% As palavras-chave também devem ser definidas para os dois idiomas do resumo, o que fará com que o conjunto certo
+% de palavras-chave seja exibido.
+%
 %\DescribeEnv{dedicatoria}
 % O ambiente |dedicatoria| foi modificado para que não seja necessário aplicar qualquer formatação, nem escrever dentro de um ambiente |minipage|, como sugere o manual da classe |abntex2|.
 % Dessa maneira, a dedicatória pode ser escrita simplesmente como:
@@ -294,6 +365,22 @@
 %      Dedico este trabalho a minha família etc.
 % \end{dedicatoria}
 %\end{verbatim}
+%
+%\DescribeEnv{epigrafe}
+% O ambiente |epigrafe| foi modificado da mesma forma que o ambiente |dedicatoria|, para que o posicionamento do texto seja feito automaticamente como pede o Guia da UCS.
+% Portanto, o ambiente pode ser utilizado da seguinte maneira:
+%\begin{verbatim}
+% \begin{epigrafe}
+%      ''Uma mente que se abre a uma nova ideia nunca mais volta ao tamanho 
+%		original.''
+%      \vspace{12pt}
+%
+%      \textbf{Albert Einstein}
+% \end{epigrafe}
+%\end{verbatim}
+%
+% O guia solicita que o nome do autor seja destacado em negrito.
+% A mudança desta parte e o espaçamento do nome para o resto do texto devem ser feitos manualmente, como mostrado no exemplo acima.
 %
 %\DescribeMacro{\fonte}
 % Essa macro foi redefinida para que o texto seja alinhado à esquerda -- e não centralizado como na definição original na classe |abntex2| -- e para que o texto ''Fonte'' seja separado do argumento passado pelo usuário por dois pontos, e não por um travessão.
@@ -322,6 +409,26 @@
 % Define quais são as palavras-chave do trabalho, que aparecerão no resumo e também nas propriedades do PDF gerado.
 % Esta macro foi criada para ser utilizada de maneira similar às macros |\autor|, |\titulo|, |\preambulo| e |\orientador| que são fornecidas pela classe |abntex2|.
 % Ela deve ser chamada, portanto, \emph{no preâmbulo do seu código}, isto é, antes de |\begin{document}|.
+%
+% A macro |\palavraschave| recebe também um argumento opcional, que define o idioma das palavras-chave fornecidas.
+% Como as palavras-chave são exibidas no \emph{resumo}, que deve ser incluído em dois idiomas,
+% esta macro também deve ser chamada duas vezes: uma sem o parâmetro opcional,
+% que indica que são as palavras-chave no idioma principal do documento;
+% e outra com o nome do idioma estrangeiro que é utilizado no resumo do trabalho.
+% A chamada duplicada desta macro é exibida no exemplo abaixo:
+%\begin{verbatim}
+% \palavraschave{Vibração. Modelagem. Defeito. Rolamento.}
+% \palavraschave[english]{Vibration. Modelling. Defect. Bearing.}
+%\end{verbatim}
+%
+% É importante que o segundo idioma que é passado como parâmetro para a macro tenha sido declarado como opção ao chamar a classe,
+% como é mostrado na Seção \ref{sec:chamada-classe}.
+%
+%\DescribeMacro{\imprimirpalavraschave}
+% Esta macro simplesmente exibe as palavras-chave configuradas com o comando\\
+% |\palavraschave|\oarg{idioma}\marg{palavras},
+% precedidas da expressão \emph{Palavras-chave}, destacada em negrito,
+% conforme especificado pelo guia da UCS.
 %
 %\DescribeMacro{\aredoconhecimento}
 % Define a área do conhecimento do trabalho desenvolvido, que é impressa na capa do trabalho.
@@ -553,6 +660,25 @@
 	\setabbreviationstyle[acronym]{long-short}%
 	\setabbreviationstyle[foreignabbreviation]{long-short-user}%
 }{}
+
+%    \end{macrocode}
+%\end{macro}
+%
+%\subsection{Definição de constantes}
+%Declaração das constantes de texto da classe.
+%\begin{macro}{\palavraschavename}
+% Constante que armazena a expressão \textit{Palavras-chave}, no idioma em que o texto estiver sendo escrito.
+%    \begin{macrocode}
+\newcommand{\palavraschavename}{Palavras-chave:}
+\addto\captionsenglish{
+    \renewcommand\palavraschavename{Keywords:}
+}
+\addto\captionsgerman{
+    \renewcommand\palavraschavename{Stichw\"orter:}
+}
+\addto\captionsspanish{
+    \renewcommand\palavraschavename{Palabras-llave:}
+}
 
 %    \end{macrocode}
 %\end{macro}
@@ -823,6 +949,30 @@
 %    \end{macrocode}
 %\end{macro}
 %
+%\begin{environment}{folhaderosto}
+%\changes{v1.3.0}{2019/08/29}{Redefinir os ambientes internos de folha de rosto}
+% Os ambientes |folhaderosto| e |folhaderosto*| da classe |abntex2| foram redefinidos para corrigir um erro provocado por comandos frágeis.
+% Um erro era gerado se não fosse deixada uma linha em branco (quebra de parágrafo) após o comando |imprimirfolhadefosto|.
+%    \begin{macrocode}
+\renewenvironment{folhaderosto}[1]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
+\renewenvironment{folhaderosto*}[1]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}
+
+%    \end{macrocode}
+%\end{environment}
+%
+%\begin{macro}{\imprimirfolhaderosto}
+%\changes{v1.3.0}{2019/08/29}{Redefinir o comando para imprimir a folha de rosto}
+% O comando |\imprimirfolhaderosto| da classe |abntex2| foi redefinido para corrigir um erro provocado por comando frágil.
+% Um erro era gerado se não fosse deixada uma linha em branco após o comando.
+%    \begin{macrocode}
+\renewcommand{\imprimirfolhaderosto}[1][\folhaderostoname]{%
+	\@ifstar{\imprimirfolhaderostostar#1}{%
+	\imprimirfolhaderostonostar#1}
+}
+
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\folhaderostocontent}
 %\changes{v1.1.1}{2018/09/18}{Corrigir justificação do nome do orientador}
 %\changes{v1.1.2}{2018/09/28}{Mudar o conteúdo para negrito}
@@ -907,6 +1057,75 @@
 
 %    \end{macrocode}
 %\end{environment}
+%
+%\begin{environment}{epigrafe}
+%\changes{v1.3.0}{2019/08/29}{Redefinição do ambiente de epígrafe}
+% Extensão do ambiente |epigrafe| para isentar o usuário da necessidade de formatar manualmente a posição do texto.
+%    \begin{macrocode}
+\let\@oldepigrafe\epigrafe
+\let\@oldendepigrafe\endepigrafe
+\def\epigrafe{%
+	\@oldepigrafe %
+	\vspace*{\fill}%
+	\hspace{0.5\textwidth}%
+	\begin{minipage}[b]{.45\textwidth}%
+		\SingleSpacing\itshape\raggedleft%
+}
+\def\endepigrafe{%
+	\end{minipage}%
+	\@oldendepigrafe
+}
+
+%    \end{macrocode}
+%\end{environment}
+%
+%\begin{environment}{resumo}
+%\changes{v1.3.0}{2019/09/02}{Redefinição do ambiente resumo}
+% O ambiente |resumo| foi totalmente redefinido para que o idioma do resumo seja selecionado como um argumento opcional.
+%    \begin{macrocode}
+\renewcommand\abstractnamefont\chaptitlefont
+\newboolean{@abstractotherlanguage}
+\setboolean{@abstractotherlanguage}{false}
+\DeclareRobustCommand\resumo{\@ifnextchar[{\@@resumo}{\@resumo}}
+\def\@resumo{%
+	\let\@oldabstractname\abstractname
+	\PRIVATEbookmarkthis{\abstractname}
+	\def\abstractname{\MakeUppercase{\@oldabstractname}}
+	\begin{abstract}
+	\SingleSpacing
+}
+\def\@@resumo[#1]{%
+	\begin{otherlanguage}{#1}
+	\setboolean{@abstractotherlanguage}{true}
+	\let\@oldabstractname\abstractname
+	\PRIVATEbookmarkthis{\abstractname}
+	\def\abstractname{\MakeUppercase{\@oldabstractname}}
+	\begin{abstract}
+	\SingleSpacing
+}
+\def\endresumo{%
+	\vspace{\onelineskip}\par
+	\imprimirpalavraschave
+	\end{abstract}
+	\PRIVATEclearpageifneeded
+	\ifthenelse{\boolean{@abstractotherlanguage}}{\end{otherlanguage}}{}
+	\setboolean{@abstractotherlanguage}{false}
+	\def\abstractname\@oldabstractname
+}
+
+%    \end{macrocode}
+%\end{environment}
+%
+%\begin{macro}{\imprimirpalavraschave}
+%\changes{v1.3.0}{2019/11/07}{Criação do comando}
+% O comando |\imprimirpalavraschave| foi criado para formatar o texto que contém as palavras-chave do documento.
+%    \begin{macrocode}
+\newcommand\imprimirpalavraschave{%
+	\textbf{\palavraschavename}\ \@palavraschavecontent}
+
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\autor}
 % Extensão da macro que define o nome do título, para que isso seja automaticamente passado para o pacote |hyperref|.
 %    \begin{macrocode}
@@ -1058,20 +1277,29 @@
 %\subsection{Comandos específicos desta classe}
 % No final do código são definidos os comandos produzidos pela classe |ucsmonograph| propriamente dita.
 %
-%\begin{macro}{\@palavraschave}
+%\begin{macro}{\@palavraschavecontent}
 % É uma macro utilizada como variável, que armazena as palavras-chave definidas pelo usuário.
 %    \begin{macrocode}
-\newcommand{\@palavraschave}{}
+\newcommand{\@palavraschavecontent}{}
 %    \end{macrocode}
 %\end{macro}
 %
 %\begin{macro}{\palavraschave}
-% Redefine o conteúdo da macro |\@palavraschave| e configura também esse conteúdo no pacote |hyperref|.
+%\changes{v1.3.0}{2019/11/07}{Adicionar parâmetro opcional de idioma ao comando}
+% Redefine o conteúdo da macro |\@palavraschavecontent| e configura também esse conteúdo no pacote |hyperref|.
+% Se o parâmetro opcional for utilizado, o conteúdo é armazenado para ser utilizado no resumo em outros idiomas,
+% e o hyperref não é configurado neste caso.
 %    \begin{macrocode}
-\newcommand{\palavraschave}[1]{%
-	\renewcommand{\@palavraschave}{#1}
+\DeclareRobustCommand\palavraschave{\@ifnextchar[{\@@palavraschave}{\@palavraschave}}
+\def\@palavraschave#1{%
+	\renewcommand\@palavraschavecontent{#1}
 	\hypersetup{%
 		pdfkeywords={#1}
+	}
+}
+\def\@@palavraschave[#1]#2{
+	\expandafter\addto\csname captions#1\endcsname{
+		\renewcommand\@palavraschavecontent{#2}
 	}
 }
 
