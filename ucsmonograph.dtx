@@ -1022,6 +1022,8 @@
 	\SingleSpacing
 }
 \def\endresumo{%
+	\vspace{\onelineskip}\par
+	\imprimirpalavraschave
 	\end{abstract}
 	\PRIVATEclearpageifneeded
 	\ifthenelse{\boolean{@abstractotherlanguage}}{\end{otherlanguage}}{}
@@ -1037,7 +1039,6 @@
 % O comando |\imprimirpalavraschave| foi criado para formatar o texto que contém as palavras-chave do documento.
 %    \begin{macrocode}
 \newcommand\imprimirpalavraschave{%
-	\vspace{12pt}\par
 	\textbf{\palavraschavename}\ \@palavraschavecontent}
 
 %    \end{macrocode}
