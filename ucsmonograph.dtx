@@ -215,7 +215,7 @@
 % Para utilizar a classe |ucsmonograph|, é recomendado consultar os manuais da classe |abntex2| e do pacote |abntex2cite|, que é utilizado para as referências bibliográficas.
 % Este manual descreve apenas os comandos desenvolvidos na própria classe |ucsmonograph| e outras redefinições de comandos que podem ser pertinentes ao usuário.
 %
-%\subsection{Chamada da classe e opções}
+%\subsection{Chamada da classe e opções}\label{sec:chamada-classe}
 %\DescribeMacro{\documentclass}
 % A classe pode ser chamada com as opções-padrão que são nativas do \LaTeX~e são encaminhadas para a classe |abntex2|.
 % Um exemplo típico para chamar a classe ao iniciar o documento pode ser
@@ -269,6 +269,10 @@
 %\DescribeMacro{\listofquadros*}
 % Gera a lista de quadros, sem colocar essa entrada no sumário.
 %
+%\section{Macros redefinidas e implementadas}
+% As subseções seguintes descrevem macros e ambientes que foram implementados na classe |ucsmonograph|,
+% ou redefinições de comandos da classe |abntex2| que foram realizadas nesta classe.
+%
 %\subsection{Redefinições da classe abn\TeX 2}
 % Alguns comandos e ambientes expostos pela classe |abntex2| foram redefinidos ou modificados na classe |ucsmonograph|, e essas alterações são apresentadas a seguir.
 %
@@ -286,6 +290,30 @@
 %
 %\DescribeMacro{\orientador}
 % A função da macro |\orientador|\marg{nome} foi estendida de maneira semelhante à macro |\autor|.
+%
+%\DescribeEnv{resumo}
+% O ambiente |resumo| foi totalmente redefinido na classe |ucsmonograph|.
+% Ele continua recebendo um parâmetro opcional, no entanto, agora este parâmetro deve receber o nome da língua em que o resumo será escrito,
+% caso seja diferente do idioma padrão do documento.
+% Com isso, o padrão de hifenização do idioma selecionado é aplicado a todo o texto contido no ambiente.
+%
+% Conforme a norma ABNT, o resumo do trabalho deve ser apresentado no idioma vernáculo (no caso da UCS, o português brasileiro),
+% e em um idioma estrangeiro.
+% Dessa maneira, o ambiente |resumo| deve ser utilizado duas vezes no documento: uma delas não leva o argumento opcional,
+% enquanto a outra deve receber o idioma em que o resumo é apresentado.
+% Um exemplo com as duas chamadas do ambiente é mostrado abaixo:
+%\begin{verbatim}
+% \begin{resumo}
+% O presente trabalho demonstra a aplicação da Teoria da Relatividade...
+% \end{resumo}
+%
+% \begin{resumo}[english]
+% The present work demonstrates the application of the Relativity Theory...
+% \end{resumo}
+%\end{verbatim}
+% Com isso, o título \emph{RESUMO} e a expressão \emph{Palavras-chave} também são adaptados ao idioma escolhido.
+% É importante que o idioma estrangeiro selecionado tenha sido incluído \emph{também nas opções da classe},
+% como é mostrado na Seção \ref{sec:chamada-classe}.
 %
 %\DescribeEnv{dedicatoria}
 % O ambiente |dedicatoria| foi modificado para que não seja necessário aplicar qualquer formatação, nem escrever dentro de um ambiente |minipage|, como sugere o manual da classe |abntex2|.
