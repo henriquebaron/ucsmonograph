@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{775}
+% \CheckSum{774}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -1021,6 +1021,7 @@
 %\begin{macro}{\fonte}
 %\changes{v1.1.1}{2018/09/18}{Reimplementada para justificar texto à esquerda}
 %\changes{v1.1.2}{2018/09/28}{Corrigido o espaçamento vertical antes da fonte}
+%\changes{v1.3.1}{2019/11/15}{Tornar o texto justificado}
 % Modificação para permitir que a fonte seja alinhada à esquerda.
 % Como o texto deve ficar alinhado com a imagem ou a tabela/quadro, um parâmetro opcional com a largura do texto foi criado.
 % O valor padrão para este parâmetro é a largura da linha.
@@ -1036,7 +1037,7 @@
 	\centering%
 	\begin{minipage}[h]{\largurafonte}
 		\vspace{2pt}
-		\raggedright\footnotesize\fontename%
+		\footnotesize\fontename%
 		\ABNTEXcaptionfontedelim\ignorespaces #2
 	\end{minipage}
 }
