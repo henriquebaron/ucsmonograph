@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{ucsmonograph}
 %<*class>
-	[2019/11/07 v1.3.0 Padrao de monografias da UCS]
+	[2020/06/14 v1.3.1 Padrao de monografias da UCS]
 %</class>
 %
 %<*driver>
@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 
-% \CheckSum{771}
+% \CheckSum{775}
 
 % \CharacterTable
 %  {Upper-case	\A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -568,6 +568,7 @@
 \fi
 
 %    \end{macrocode}
+%\changes{v1.3.1}{Passar opção para o pacote abntex2cite}
 % Referências a bibliografia no padrão ABNT.
 % Opções: substituir listas com mais de dois autores por "et al." e escrever o "et al." em itálico.\\
 %Se estiver configurada citação numérica, configura para que as citações sejam feitas entre colchetes e permite as citações múltiplas como [8-11], por exemplo.
@@ -587,6 +588,12 @@
 \let\IfSubStringInString\relax 
 \let\su@IfSubStringInString\relax
 
+%    \end{macrocode}
+%\changes{v1.3.1}{Remoção das chaves em volta de URLs}
+%Remoção das chaves ''<>'' em volta de URLs, para adequar à mudança nas normas da UCS, edição de 2020.
+%    \begin{macrocode}
+\def\UrlLeft{}
+\def\UrlRight{}
 %    \end{macrocode}
 % Configurações gerais do pacote |hyperref|.
 %    \begin{macrocode}
